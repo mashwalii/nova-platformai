@@ -1,0 +1,3 @@
+import { Button } from "@/components/ui/button";
+import { useApp } from "@/contexts/AppContext";
+export function LanguageSwitcher({compact=false}:{compact?:boolean}){const {language,setLanguage}=useApp();return <div className="inline-flex rounded-md border border-border bg-card p-0.5" aria-label="Language"><Button size="sm" variant={language==="en"?"secondary":"ghost"} className={compact?"h-7 px-2":"h-7 px-2.5"} onClick={()=>setLanguage("en")}>EN</Button><Button size="sm" variant={language==="ar"?"secondary":"ghost"} className={compact?"h-7 px-2":"h-7 px-2.5"} onClick={()=>setLanguage("ar")}>العربية</Button></div>}

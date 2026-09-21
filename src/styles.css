@@ -166,6 +166,11 @@
     letter-spacing: 0;
     -webkit-font-smoothing: antialiased;
   }
+
+  html[dir="rtl"] body {
+    font-family: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.7;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
