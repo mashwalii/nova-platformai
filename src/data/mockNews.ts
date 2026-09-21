@@ -3,78 +3,66 @@ import openModelImage from "@/assets/nova-open-model.jpg";
 import roboticsImage from "@/assets/nova-robotics.jpg";
 import chipsImage from "@/assets/nova-chips.jpg";
 
+export type Language = "en" | "ar";
+export type Localized = { en: string; ar: string };
+export type TimelineItem = { time: Localized; title: Localized; description: Localized };
 export type NewsItem = {
-  id: string;
-  title: string;
-  summary: string;
-  category: string;
-  source: string;
-  time: string;
-  readTime: string;
-  image?: string;
-  imageWidth?: number;
-  imageHeight?: number;
-  views?: string;
-  comments?: string;
-  featured?: boolean;
+  id: string; title: Localized; summary: Localized; category: Localized; source: string; author: Localized;
+  published: Localized; updated: Localized; readTime: Localized; image: string; imageWidth: number; imageHeight: number;
+  views: string; comments: string; importance?: "essential" | "high"; trending?: boolean;
+  tldr: Localized; takeaways: Localized[]; whyItMatters: Localized; whatHappened: Localized[];
+  timeline: TimelineItem[]; metrics: { value: string; label: Localized }[]; quote: Localized;
+  originalUrl: string;
 };
 
-export const categories = [
-  "All News", "Breaking News", "AI Research", "Generative AI", "AI Models",
-  "AI Agents", "Robotics", "Computer Vision", "Open Source", "AI Companies",
-  "AI Startups", "AI Tools", "AI Safety", "AI Policy", "AI Funding",
+const l = (en: string, ar: string): Localized => ({ en, ar });
+const sharedTimeline: TimelineItem[] = [
+  { time: l("08:00 UTC", "08:00 بتوقيت غرينتش"), title: l("Research released", "نشر البحث"), description: l("The team published its paper, model card and evaluation results.", "نشر الفريق الورقة العلمية وبطاقة النموذج ونتائج التقييم.") },
+  { time: l("11:30 UTC", "11:30 بتوقيت غرينتش"), title: l("Independent checks begin", "بدء التحقق المستقل"), description: l("External researchers started reproducing the headline findings.", "بدأ باحثون مستقلون في إعادة اختبار النتائج الرئيسية.") },
+  { time: l("16:15 UTC", "16:15 بتوقيت غرينتش"), title: l("Industry response", "استجابة القطاع"), description: l("Developers and policy teams published their first assessments.", "نشرت فرق التطوير والسياسات تقييماتها الأولية.") },
 ];
 
-export const featuredStory: NewsItem = {
-  id: "multimodal-reasoning",
-  title: "A new multimodal system learns to reason across sight, sound and language",
-  summary: "Researchers report a step-change in how foundation models connect visual evidence, spoken context and structured logic—without sacrificing response speed.",
-  category: "AI Research",
-  source: "NOVA Intelligence",
-  time: "28 min ago",
-  readTime: "6 min read",
-  image: heroImage,
-  imageWidth: 1600,
-  imageHeight: 1000,
-  views: "12.8K",
-  comments: "184",
-  featured: true,
-};
-
-export const briefs: NewsItem[] = [
+export const articles: NewsItem[] = [
   {
-    id: "compute-fund",
-    title: "VectorGrid closes $480M fund for frontier compute infrastructure",
-    summary: "The new vehicle will back energy-efficient data centers and custom inference hardware.",
-    category: "AI Funding", source: "Financial Ledger", time: "42 min ago", readTime: "3 min read",
+    id: "multimodal-reasoning", title: l("A new multimodal system learns to reason across sight, sound and language", "نظام متعدد الوسائط يتعلم الاستدلال عبر الصورة والصوت واللغة"),
+    summary: l("Researchers report a step-change in how foundation models connect visual evidence, spoken context and structured logic—without sacrificing response speed.", "أعلن باحثون عن تقدم نوعي في قدرة النماذج الأساسية على ربط الأدلة المرئية والسياق الصوتي والمنطق المنظم دون التضحية بسرعة الاستجابة."),
+    category: l("AI Research", "أبحاث الذكاء الاصطناعي"), source: "NOVA Intelligence", author: l("Maya Chen", "مايا تشين"), published: l("Sep 21, 2026", "21 سبتمبر 2026"), updated: l("Updated 28 min ago", "حُدّث قبل 28 دقيقة"), readTime: l("6 min read", "6 دقائق للقراءة"), image: heroImage, imageWidth: 1600, imageHeight: 1000, views: "12.8K", comments: "184", importance: "essential", trending: true,
+    tldr: l("The system combines images, audio and text in one reasoning loop. It outperformed specialist models on cross-modal tasks while keeping latency low. The result could make assistants more reliable in real-world environments.", "يجمع النظام الصور والصوت والنص في دورة استدلال واحدة. وتفوّق على نماذج متخصصة في مهام متعددة الوسائط مع الحفاظ على سرعة الاستجابة، ما قد يجعل المساعدات الذكية أكثر موثوقية في البيئات الواقعية."),
+    takeaways: [l("One model reasons across three data types", "نموذج واحد يستدل عبر ثلاثة أنواع من البيانات"), l("Cross-modal accuracy improved by 18%", "تحسنت الدقة متعددة الوسائط بنسبة 18%"), l("Inference remains fast enough for live use", "سرعة الاستدلال مناسبة للاستخدام المباشر")],
+    whyItMatters: l("Most real decisions rely on more than text. A system that can reconcile what it sees, hears and reads may unlock safer robotics, accessibility tools and clinical support.", "تعتمد معظم القرارات الواقعية على أكثر من النص. وقد يفتح النظام القادر على التوفيق بين ما يراه ويسمعه ويقرأه آفاقًا جديدة للروبوتات الآمنة وأدوات الوصول والدعم السريري."),
+    whatHappened: [l("The research team trained a shared reasoning layer instead of connecting separate vision and audio tools after the fact.", "درّب فريق البحث طبقة استدلال مشتركة بدلًا من ربط أدوات منفصلة للرؤية والصوت لاحقًا."), l("In controlled evaluations, the model identified conflicting evidence and explained which signal it trusted.", "في الاختبارات المنضبطة، تعرّف النموذج على الأدلة المتعارضة وشرح الإشارة التي اعتمد عليها."), l("The team released evaluation details, but model weights remain under review.", "أصدر الفريق تفاصيل التقييم، بينما لا تزال أوزان النموذج قيد المراجعة.")], timeline: sharedTimeline,
+    metrics: [{ value: "+18%", label: l("cross-modal accuracy", "دقة متعددة الوسائط") }, { value: "42ms", label: l("median latency", "متوسط زمن الاستجابة") }, { value: "24", label: l("evaluation domains", "مجالًا للتقييم") }], quote: l("The breakthrough is not seeing or hearing better—it is knowing when those signals disagree.", "الاختراق ليس في تحسين الرؤية أو السمع، بل في معرفة متى تتعارض هذه الإشارات."), originalUrl: "https://arxiv.org/"
   },
   {
-    id: "benchmark",
-    title: "Benchmark exposes hidden gaps in long-horizon agent planning",
-    summary: "A 1,200-task evaluation finds even leading agents struggle to recover from early mistakes.",
-    category: "AI Agents", source: "Arxiv Daily", time: "1 hr ago", readTime: "5 min read",
+    id: "compute-fund", title: l("VectorGrid closes $480M fund for frontier compute infrastructure", "VectorGrid تغلق صندوقًا بقيمة 480 مليون دولار لبنية الحوسبة المتقدمة"), summary: l("The new vehicle will back energy-efficient data centers and custom inference hardware.", "سيدعم الصندوق مراكز بيانات موفرة للطاقة وعتادًا مخصصًا للاستدلال."), category: l("AI Funding", "تمويل الذكاء الاصطناعي"), source: "Financial Ledger", author: l("Jon Bell", "جون بيل"), published: l("Sep 21, 2026", "21 سبتمبر 2026"), updated: l("Updated 42 min ago", "حُدّث قبل 42 دقيقة"), readTime: l("3 min read", "3 دقائق للقراءة"), image: chipsImage, imageWidth: 1200, imageHeight: 800, views: "9.2K", comments: "73", trending: true,
+    tldr: l("VectorGrid has raised a major infrastructure fund focused on efficient AI compute. The capital will target data centers, cooling and inference chips.", "جمعت VectorGrid صندوق بنية تحتية كبيرًا يركز على حوسبة الذكاء الاصطناعي الفعالة، وسيستهدف مراكز البيانات والتبريد وشرائح الاستدلال."), takeaways: [l("$480M committed at first close", "التزام بقيمة 480 مليون دولار"), l("Efficiency is the core investment thesis", "الكفاءة هي محور استراتيجية الاستثمار"), l("First deployments begin next quarter", "بدء أولى عمليات النشر في الربع القادم")], whyItMatters: l("Compute access increasingly determines who can build and deploy competitive AI systems.", "تحدد القدرة على الوصول إلى الحوسبة بصورة متزايدة من يستطيع بناء أنظمة ذكاء اصطناعي تنافسية ونشرها."), whatHappened: [l("Institutional investors backed a new fund for AI infrastructure.", "دعم مستثمرون مؤسسيون صندوقًا جديدًا لبنية الذكاء الاصطناعي."), l("The fund will prioritize regions with abundant renewable power.", "سيعطي الصندوق الأولوية للمناطق ذات الطاقة المتجددة الوفيرة.")], timeline: sharedTimeline, metrics: [{ value: "$480M", label: l("fund size", "حجم الصندوق") }, { value: "8", label: l("planned sites", "مواقع مخطط لها") }, { value: "35%", label: l("energy target", "هدف خفض الطاقة") }], quote: l("The next compute race will be won on efficiency, not raw scale.", "سيُحسم سباق الحوسبة القادم بالكفاءة لا بالحجم الخام."), originalUrl: "https://example.com/"
   },
   {
-    id: "policy",
-    title: "Global safety framework moves from principles to audits",
-    summary: "The voluntary standard introduces shared reporting thresholds for frontier labs.",
-    category: "AI Policy", source: "Policy Wire", time: "2 hrs ago", readTime: "4 min read",
-  },
-];
-
-export const spotlight: NewsItem[] = [
-  {
-    id: "open-weights", title: "Open-weight model rivals proprietary systems on reasoning", summary: "A compact architecture is changing the economics of advanced model deployment.",
-    category: "Open Source", source: "Model Review", time: "3 hrs ago", readTime: "7 min read", image: openModelImage, imageWidth: 1200, imageHeight: 800, views: "8.4K", comments: "96",
+    id: "benchmark", title: l("Benchmark exposes hidden gaps in long-horizon agent planning", "معيار جديد يكشف فجوات خفية في تخطيط الوكلاء طويل الأمد"), summary: l("A 1,200-task evaluation finds even leading agents struggle to recover from early mistakes.", "يكشف تقييم يضم 1200 مهمة أن الوكلاء الرائدين يواجهون صعوبة في التعافي من الأخطاء المبكرة."), category: l("AI Agents", "وكلاء الذكاء الاصطناعي"), source: "Arxiv Daily", author: l("Rina Patel", "رينا باتيل"), published: l("Sep 21, 2026", "21 سبتمبر 2026"), updated: l("Updated 1 hr ago", "حُدّث قبل ساعة"), readTime: l("5 min read", "5 دقائق للقراءة"), image: openModelImage, imageWidth: 1200, imageHeight: 800, views: "7.6K", comments: "241", importance: "high",
+    tldr: l("A demanding benchmark shows that autonomous agents often compound small early errors. Recovery and replanning remain the largest weaknesses.", "يُظهر معيار صارم أن الوكلاء المستقلين يراكمون الأخطاء الصغيرة المبكرة، وأن التعافي وإعادة التخطيط لا يزالان أكبر نقاط الضعف."), takeaways: [l("1,200 real-world tasks tested", "اختبار 1200 مهمة واقعية"), l("Recovery trails planning ability", "التعافي يتأخر عن قدرة التخطيط"), l("Transparent traces improve diagnosis", "المسارات الشفافة تحسن التشخيص")], whyItMatters: l("Agents cannot be trusted with consequential work until they reliably notice and repair their own mistakes.", "لا يمكن الوثوق بالوكلاء في الأعمال الحساسة حتى يتمكنوا من اكتشاف أخطائهم وإصلاحها بثبات."), whatHappened: [l("Researchers designed tasks lasting from 20 minutes to several hours.", "صمم الباحثون مهامًا تمتد من 20 دقيقة إلى عدة ساعات."), l("Leading systems failed most often after an incorrect assumption went unchallenged.", "فشلت الأنظمة الرائدة غالبًا بعد استمرار افتراض خاطئ دون مراجعة.")], timeline: sharedTimeline, metrics: [{ value: "1,200", label: l("tasks", "مهمة") }, { value: "31%", label: l("full completion", "إتمام كامل") }, { value: "2.4×", label: l("error compounding", "تراكم الأخطاء") }], quote: l("A good plan is not enough; resilient agents need to know when the plan has failed.", "الخطة الجيدة لا تكفي؛ يحتاج الوكيل المرن إلى معرفة متى فشلت خطته."), originalUrl: "https://arxiv.org/"
   },
   {
-    id: "robot-learning", title: "Robots learn delicate assembly from a single demonstration", summary: "A new training method transfers dexterity across unfamiliar tools and environments.",
-    category: "Robotics", source: "Robotics Lab", time: "4 hrs ago", readTime: "5 min read", image: roboticsImage, imageWidth: 1200, imageHeight: 800, views: "6.2K", comments: "71",
+    id: "policy", title: l("Global safety framework moves from principles to audits", "إطار السلامة العالمي ينتقل من المبادئ إلى عمليات التدقيق"), summary: l("The voluntary standard introduces shared reporting thresholds for frontier labs.", "يقدم المعيار الطوعي حدودًا مشتركة للإبلاغ لدى مختبرات النماذج المتقدمة."), category: l("AI Policy", "سياسات الذكاء الاصطناعي"), source: "Policy Wire", author: l("Sara Malik", "سارة مالك"), published: l("Sep 21, 2026", "21 سبتمبر 2026"), updated: l("Updated 2 hrs ago", "حُدّث قبل ساعتين"), readTime: l("4 min read", "4 دقائق للقراءة"), image: heroImage, imageWidth: 1600, imageHeight: 1000, views: "5.9K", comments: "318", importance: "essential",
+    tldr: l("A global safety initiative has translated broad promises into measurable audits. Frontier labs will report against shared capability thresholds.", "حوّلت مبادرة عالمية للسلامة الوعود العامة إلى عمليات تدقيق قابلة للقياس، وستبلغ المختبرات المتقدمة وفق حدود قدرات مشتركة."), takeaways: [l("Shared reporting thresholds", "حدود مشتركة للإبلاغ"), l("Independent audit pathway", "مسار تدقيق مستقل"), l("Voluntary first phase", "مرحلة أولى طوعية")], whyItMatters: l("Comparable evidence can make safety commitments easier to verify and harder to dilute.", "يمكن للأدلة القابلة للمقارنة أن تجعل التزامات السلامة أسهل في التحقق وأصعب في التخفيف."), whatHappened: [l("Twelve labs agreed to common evaluation disclosures.", "وافقت اثنتا عشرة جهة على إفصاحات تقييم مشتركة."), l("Independent auditors will pilot the framework this year.", "سيختبر مدققون مستقلون الإطار هذا العام.")], timeline: sharedTimeline, metrics: [{ value: "12", label: l("participating labs", "مختبرًا مشاركًا") }, { value: "6", label: l("risk domains", "مجالات مخاطر") }, { value: "Q4", label: l("first audits", "أول تدقيق") }], quote: l("Principles matter only when evidence can prove they changed practice.", "لا قيمة للمبادئ ما لم تثبت الأدلة أنها غيّرت الممارسة."), originalUrl: "https://example.com/"
   },
   {
-    id: "inference-chip", title: "The inference chip race enters its efficiency era", summary: "New silicon designs target lower energy use without compromising token throughput.",
-    category: "AI Companies", source: "Circuit", time: "5 hrs ago", readTime: "8 min read", image: chipsImage, imageWidth: 1200, imageHeight: 800, views: "10.1K", comments: "128",
+    id: "open-weights", title: l("Open-weight model rivals proprietary systems on reasoning", "نموذج مفتوح الأوزان ينافس الأنظمة المغلقة في الاستدلال"), summary: l("A compact architecture is changing the economics of advanced model deployment.", "بنية مدمجة تغيّر اقتصاديات نشر النماذج المتقدمة."), category: l("Open Source", "المصدر المفتوح"), source: "Model Review", author: l("Noah Kim", "نواه كيم"), published: l("Sep 21, 2026", "21 سبتمبر 2026"), updated: l("Updated 3 hrs ago", "حُدّث قبل 3 ساعات"), readTime: l("7 min read", "7 دقائق للقراءة"), image: openModelImage, imageWidth: 1200, imageHeight: 800, views: "8.4K", comments: "96", importance: "high",
+    tldr: l("A smaller open model matches larger closed systems on several reasoning tests. Its permissive release could lower deployment costs.", "يطابق نموذج مفتوح أصغر أنظمة مغلقة أكبر في اختبارات استدلال عدة، وقد يخفّض ترخيصه المرن تكاليف النشر."), takeaways: [l("Strong reasoning at compact scale", "استدلال قوي بحجم مدمج"), l("Runs on accessible hardware", "يعمل على عتاد متاح"), l("Permissive research license", "ترخيص بحثي مرن")], whyItMatters: l("Capable open models broaden access and let organizations inspect how systems behave.", "توسع النماذج المفتوحة القادرة نطاق الوصول وتتيح للمؤسسات فحص سلوك الأنظمة."), whatHappened: [l("The team released weights and evaluation code.", "أصدر الفريق الأوزان وشيفرة التقييم."), l("Independent tests broadly confirmed the reported results.", "أكدت اختبارات مستقلة النتائج المعلنة بصورة عامة.")], timeline: sharedTimeline, metrics: [{ value: "32B", label: l("parameters", "معلمة") }, { value: "87%", label: l("reasoning score", "درجة الاستدلال") }, { value: "1×GPU", label: l("local setup", "إعداد محلي") }], quote: l("Capability is becoming less tied to model size.", "لم تعد القدرة مرتبطة بحجم النموذج كما كانت."), originalUrl: "https://huggingface.co/"
+  },
+  {
+    id: "robot-learning", title: l("Robots learn delicate assembly from a single demonstration", "روبوتات تتعلم التجميع الدقيق من عرض واحد"), summary: l("A new training method transfers dexterity across unfamiliar tools and environments.", "تنقل طريقة تدريب جديدة المهارة الحركية بين أدوات وبيئات غير مألوفة."), category: l("Robotics", "الروبوتات"), source: "Robotics Lab", author: l("Eli Stone", "إيلي ستون"), published: l("Sep 21, 2026", "21 سبتمبر 2026"), updated: l("Updated 4 hrs ago", "حُدّث قبل 4 ساعات"), readTime: l("5 min read", "5 دقائق للقراءة"), image: roboticsImage, imageWidth: 1200, imageHeight: 800, views: "6.2K", comments: "171", trending: true,
+    tldr: l("A robot can now learn delicate assembly by watching one expert example. The technique adapts the motion to new tools and workspaces.", "يمكن للروبوت الآن تعلم التجميع الدقيق من مشاهدة مثال خبير واحد، وتكيّف التقنية الحركة مع أدوات ومساحات عمل جديدة."), takeaways: [l("Single demonstration learning", "تعلم من عرض واحد"), l("Transfers across tools", "انتقال بين الأدوات"), l("Fewer damaged parts", "أجزاء تالفة أقل")], whyItMatters: l("Fast teaching could make flexible automation practical for smaller manufacturers.", "قد يجعل التعليم السريع الأتمتة المرنة عملية للمصنعين الأصغر."), whatHappened: [l("The robot extracts intent rather than copying exact motion.", "يستخلص الروبوت القصد بدلًا من نسخ الحركة حرفيًا."), l("Tests covered electronics and medical-device assembly.", "شملت الاختبارات تجميع الإلكترونيات والأجهزة الطبية.")], timeline: sharedTimeline, metrics: [{ value: "1", label: l("demo needed", "عرض مطلوب") }, { value: "94%", label: l("task success", "نجاح المهمة") }, { value: "7", label: l("tool types", "أنواع أدوات") }], quote: l("The system learns what the demonstration means, not just what it looks like.", "يتعلم النظام معنى العرض، لا شكله فقط."), originalUrl: "https://example.com/"
+  },
+  {
+    id: "inference-chip", title: l("The inference chip race enters its efficiency era", "سباق شرائح الاستدلال يدخل عصر الكفاءة"), summary: l("New silicon designs target lower energy use without compromising token throughput.", "تستهدف تصاميم سيليكون جديدة خفض استهلاك الطاقة دون التأثير في إنتاجية الرموز."), category: l("AI Companies", "شركات الذكاء الاصطناعي"), source: "Circuit", author: l("Amir Haddad", "أمير حداد"), published: l("Sep 21, 2026", "21 سبتمبر 2026"), updated: l("Updated 5 hrs ago", "حُدّث قبل 5 ساعات"), readTime: l("8 min read", "8 دقائق للقراءة"), image: chipsImage, imageWidth: 1200, imageHeight: 800, views: "10.1K", comments: "128", importance: "high",
+    tldr: l("Chipmakers are shifting attention from peak speed to useful work per watt. New architectures may significantly cut inference costs.", "ينقل صانعو الشرائح اهتمامهم من السرعة القصوى إلى العمل المفيد لكل واط، وقد تخفض البنى الجديدة تكاليف الاستدلال كثيرًا."), takeaways: [l("Performance per watt leads", "الأداء لكل واط في الصدارة"), l("Memory redesign drives gains", "إعادة تصميم الذاكرة تقود المكاسب"), l("Sampling begins this quarter", "بدء العينات هذا الربع")], whyItMatters: l("Inference is becoming the dominant cost of widely used AI products.", "أصبح الاستدلال التكلفة المهيمنة لمنتجات الذكاء الاصطناعي واسعة الاستخدام."), whatHappened: [l("Three vendors previewed purpose-built inference silicon.", "استعرضت ثلاث شركات شرائح مصممة خصيصًا للاستدلال."), l("All emphasize memory bandwidth and reduced data movement.", "تركز جميعها على عرض نطاق الذاكرة وتقليل حركة البيانات.")], timeline: sharedTimeline, metrics: [{ value: "2.3×", label: l("performance/watt", "الأداء لكل واط") }, { value: "-38%", label: l("serving cost", "تكلفة التشغيل") }, { value: "2027", label: l("volume launch", "الإطلاق التجاري") }], quote: l("The cheapest token will define the next market leader.", "أرخص رمز سيحدد قائد السوق القادم."), originalUrl: "https://example.com/"
   },
 ];
 
-export const allNews = [featuredStory, ...briefs, ...spotlight];
+export const allNews = articles;
+export const featuredStory = articles[0];
+export const briefs = articles.slice(1, 4);
+export const spotlight = articles.slice(4, 7);
+export const categories: Localized[] = [l("All News", "كل الأخبار"), l("Breaking News", "عاجل"), l("AI Research", "أبحاث الذكاء الاصطناعي"), l("Generative AI", "الذكاء التوليدي"), l("AI Models", "نماذج الذكاء الاصطناعي"), l("AI Agents", "وكلاء الذكاء الاصطناعي"), l("Robotics", "الروبوتات"), l("Computer Vision", "الرؤية الحاسوبية"), l("Open Source", "المصدر المفتوح"), l("AI Companies", "شركات الذكاء الاصطناعي"), l("AI Tools", "أدوات الذكاء الاصطناعي"), l("AI Safety", "سلامة الذكاء الاصطناعي"), l("AI Policy", "السياسات")];
+export const text = (value: Localized, language: Language) => value[language];
+export const getArticle = (id: string) => articles.find((article) => article.id === id);
