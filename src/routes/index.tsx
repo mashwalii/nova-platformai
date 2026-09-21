@@ -1,67 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
-import { Search, X } from "lucide-react";
-import { toast } from "sonner";
-import { Navbar } from "@/components/Navbar";
-import { Sidebar } from "@/components/Sidebar";
-import { PageHeader } from "@/components/PageHeader";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight, BarChart3, BookOpen, MessageCircle, Radio, Sparkles, TrendingUp } from "lucide-react";
+import { AppShell } from "@/components/AppShell";
 import { FeaturedNewsCard } from "@/components/FeaturedNewsCard";
 import { NewsCard } from "@/components/NewsCard";
 import { SectionHeader } from "@/components/SectionHeader";
-import { EmptyState } from "@/components/EmptyState";
 import { Button } from "@/components/ui/button";
-import { allNews, briefs, featuredStory, spotlight } from "@/data/mockNews";
-
-export const Route = createFileRoute("/")({
-  head: () => ({ meta: [
-    { title: "NOVA AI — AI News & Intelligence" },
-    { name: "description", content: "Essential reporting and analysis on artificial intelligence, research, models, companies and policy." },
-    { property: "og:title", content: "NOVA AI — AI News & Intelligence" },
-    { property: "og:description", content: "Signal over noise: essential AI reporting and analysis." },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ]}),
-  component: Index,
-});
-
-function Index() {
-  const [dark, setDark] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("All News");
-  const [saved, setSaved] = useState<Set<string>>(new Set(["open-weights"]));
-  const [collapsed, setCollapsed] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [query, setQuery] = useState("");
-
-  useEffect(() => { document.documentElement.classList.toggle("dark", dark); }, [dark]);
-  useEffect(() => {
-    const keydown = (event: KeyboardEvent) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") { event.preventDefault(); setSearchOpen(true); }
-      if (event.key === "Escape") setSearchOpen(false);
-    };
-    window.addEventListener("keydown", keydown);
-    return () => window.removeEventListener("keydown", keydown);
-  }, []);
-
-  const toggleSaved = (id: string) => setSaved((current) => { const next = new Set(current); next.has(id) ? next.delete(id) : next.add(id); return next; });
-  const filtered = useMemo(() => allNews.filter((item) => `${item.title} ${item.summary} ${item.category}`.toLowerCase().includes(query.toLowerCase())), [query]);
-  const categoryItems = activeCategory === "All News" ? null : allNews.filter((item) => item.category === activeCategory);
-
-  return <div className="min-h-screen bg-background text-foreground">
-    <Navbar dark={dark} onTheme={() => setDark((value) => !value)} onSearch={() => setSearchOpen(true)} onMenu={() => setMobileOpen(true)} />
-    <div className="flex h-[calc(100vh-4rem)]">
-      <Sidebar active={activeCategory} onSelect={setActiveCategory} savedCount={saved.size} collapsed={collapsed} onCollapse={() => setCollapsed((value) => !value)} mobileOpen={mobileOpen} onMobileClose={() => setMobileOpen(false)} />
-      <main className="min-w-0 flex-1 overflow-y-auto"><div className="mx-auto max-w-[1480px] px-4 py-7 sm:px-6 lg:px-8 lg:py-9">
-        <PageHeader category={activeCategory} />
-        {categoryItems ? (categoryItems.length ? <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">{categoryItems.map((item) => <NewsCard key={item.id} item={item} saved={saved.has(item.id)} onSave={() => toggleSaved(item.id)} />)}</div> : <EmptyState />) : <>
-          <section className="grid gap-5 xl:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.8fr)]">
-            <FeaturedNewsCard item={featuredStory} saved={saved.has(featuredStory.id)} onSave={() => toggleSaved(featuredStory.id)} onShare={() => toast.success("Share link copied")} />
-            <div className="flex flex-col rounded-lg border border-border bg-card p-5 shadow-card"><SectionHeader title="Intelligence Briefs" eyebrow="Live desk" /><div className="divide-y divide-border">{briefs.map((item, index) => <article key={item.id} className="py-5 first:pt-1"><div className="grid grid-cols-[auto_minmax(0,1fr)] gap-3"><span className="text-xs font-bold text-primary">0{index + 1}</span><div className="min-w-0"><p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{item.category} · {item.time}</p><h3 className="mt-1.5 text-base font-bold leading-snug text-foreground">{item.title}</h3><p className="mt-2 text-xs leading-5 text-muted-foreground">{item.summary}</p></div></div></article>)}</div><Button variant="outline" className="mt-auto w-full" onClick={() => setActiveCategory("Breaking News")}>Open live briefing</Button></div>
-          </section>
-          <section className="mt-10"><SectionHeader title="The Spotlight" eyebrow="Deeper intelligence" onViewAll={() => setActiveCategory("AI Research")} /><div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">{spotlight.map((item) => <NewsCard key={item.id} item={item} saved={saved.has(item.id)} onSave={() => toggleSaved(item.id)} />)}</div></section>
-        </>}
-      </div></main>
-    </div>
-    {searchOpen && <div className="fixed inset-0 z-[60] bg-overlay/70 px-4 pt-[12vh] backdrop-blur-sm" onMouseDown={() => setSearchOpen(false)}><div className="mx-auto max-w-2xl overflow-hidden rounded-lg border border-border bg-popover shadow-modal" onMouseDown={(event) => event.stopPropagation()}><div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 border-b border-border px-4"><Search className="h-5 w-5 text-muted-foreground" /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search models, companies, research…" className="h-14 min-w-0 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground" /><Button size="icon" variant="ghost" onClick={() => setSearchOpen(false)} aria-label="Close search"><X /></Button></div><div className="max-h-[52vh] overflow-y-auto p-2">{filtered.length ? filtered.map((item) => <button key={item.id} className="block w-full rounded-md px-3 py-3 text-left hover:bg-accent" onClick={() => { setActiveCategory(item.category); setSearchOpen(false); setQuery(""); }}><span className="text-[10px] font-bold uppercase tracking-wider text-primary">{item.category}</span><p className="mt-1 text-sm font-semibold text-foreground">{item.title}</p></button>) : <EmptyState />}</div></div></div>}
-  </div>;
-}
+import { allNews, articles, text } from "@/data/mockNews";
+import { courses } from "@/data/mockLearning";
+import { opportunities } from "@/data/mockOpportunities";
+import { useApp } from "@/contexts/AppContext";
+export const Route=createFileRoute("/")({head:()=>({meta:[{title:"NOVA AI — AI News & Intelligence"},{name:"description",content:"Essential reporting and analysis on artificial intelligence, research, models, companies and policy."},{property:"og:title",content:"NOVA AI — AI News & Intelligence"},{property:"og:description",content:"Signal over noise: essential AI reporting and analysis."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:Home});
+function Home(){const {language}=useApp();const ar=language==="ar";const lead=articles[0];if(!lead)return null;const topics=ar?["الذكاء الاصطناعي","البرمجة","تعلم الآلة","الروبوتات","أدوات الذكاء الاصطناعي","الأمن السيبراني"]:["AI","Programming","Machine Learning","Robotics","AI Tools","Cybersecurity"];return <AppShell><div className="mx-auto max-w-[1480px] px-4 py-7 sm:px-6 lg:px-8 lg:py-9"><header className="mb-7 border-b border-border pb-6"><p className="text-xs font-bold uppercase text-primary">{ar?"موجز الاثنين، 21 سبتمبر":"Monday, September 21 Intelligence Briefing"}</p><div className="mt-3 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto]"><div><h1 className="text-3xl font-extrabold sm:text-5xl">{ar?"صباح الخير. إليك ما يهم اليوم.":"Good morning. Here’s what matters."}</h1><p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground">{ar?"إشارات موثوقة وسط الضجيج: أهم التطورات التي تشكل مستقبل الذكاء الاصطناعي.":"Signal over noise: the consequential developments shaping artificial intelligence today."}</p></div><div className="grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-border bg-border"><Stat value="24" label={ar?"خبرًا مراقبًا":"stories tracked"}/><Stat value="7" label={ar?"تحديثات مهمة":"major updates"}/><Stat value="3" label={ar?"إشارات عاجلة":"urgent signals"}/></div></div></header><section><SectionHeader title={ar?"ما يستحق اهتمامك":"What's Worth Your Attention"} eyebrow={ar?"اختيارات المحررين":"Editor picks"}/><FeaturedNewsCard item={lead}/></section><section className="mt-12"><SectionHeader title={ar?"الأكثر انتشارًا":"Trending Now"} eyebrow={ar?"زخم مرتفع":"High velocity"}/><div className="grid gap-4 lg:grid-cols-3">{allNews.slice(1,4).map((item,i)=><Link key={item.id} to="/article/$id" params={{id:item.id}} className="group grid grid-cols-[auto_minmax(0,1fr)] gap-4 border-t border-border py-5"><span className="text-3xl font-black text-muted-foreground/40">0{i+1}</span><div><span className="flex items-center gap-1 text-[10px] font-bold uppercase text-signal"><TrendingUp className="h-3 w-3"/>{ar?"يتصدر الآن":"Trending"}</span><h3 className="mt-2 font-bold leading-snug group-hover:text-primary">{text(item.title,language)}</h3><p className="mt-2 text-xs text-muted-foreground">{item.source} · {item.comments} {ar?"تعليقًا":"comments"}</p></div></Link>)}</div></section><section className="mt-12"><SectionHeader title={ar?"الأكثر أهمية":"Most Important"} eyebrow={ar?"تطورات محورية":"Breakthroughs"}/><div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">{allNews.filter(a=>a.importance).slice(0,3).map(item=><NewsCard key={item.id} item={item}/>)}</div></section><section className="mt-12 border-y border-border py-8"><SectionHeader title={ar?"مختارات لك":"For You"} eyebrow={ar?"موجزك الشخصي":"Your briefing"}/><div className="mb-6 flex flex-wrap gap-2">{topics.map((topic,i)=><Button key={topic} variant={i===0?"default":"outline"} size="sm">{topic}</Button>)}</div><div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">{allNews.slice(3,6).map(item=><NewsCard key={item.id} item={item}/>)}</div></section><div className="mt-12 grid gap-10 xl:grid-cols-2"><StoryList title={ar?"الأكثر نقاشًا":"Most Discussed"} icon={<MessageCircle/>} items={[...allNews].sort((a,b)=>Number.parseInt(b.comments)-Number.parseInt(a.comments)).slice(0,3)}/><StoryList title={ar?"أبحاث الذكاء الاصطناعي والنماذج":"AI Research & Models"} icon={<BarChart3/>} items={[allNews[0],allNews[2],allNews[4]].filter(Boolean)}/></div><section className="mt-12"><div className="flex items-end justify-between"><SectionHeader title={ar?"فرص قد تهمك":"Opportunities for You"} eyebrow={ar?"نمِّ مسيرتك":"Grow your career"}/><Button asChild variant="ghost"><Link to="/opportunities">{ar?"عرض الكل":"View all"}<ArrowUpRight/></Link></Button></div><div className="grid gap-4 md:grid-cols-3">{opportunities.slice(0,3).map(o=><Link key={o.id} to="/opportunities" className="border border-border bg-card p-5 shadow-card hover:border-primary"><span className="text-[10px] font-bold uppercase text-primary">{text(o.category,language)}</span><h3 className="mt-2 font-bold">{text(o.title,language)}</h3><p className="mt-2 text-xs text-muted-foreground">{o.organization} · {text(o.location,language)}</p></Link>)}</div></section><section className="mt-12"><div className="flex items-end justify-between"><SectionHeader title={ar?"دورات مجانية ومسارات تعلم":"Free Courses & Learning Paths"} eyebrow={ar?"تعلّم بذكاء":"Build your skills"}/><Button asChild variant="ghost"><Link to="/courses">{ar?"استكشف الدورات":"Explore courses"}<ArrowUpRight/></Link></Button></div><div className="grid gap-4 md:grid-cols-3">{courses.slice(0,3).map(c=><Link key={c.id} to="/courses" className="grid grid-cols-[88px_minmax(0,1fr)] gap-4 border border-border bg-card p-3 shadow-card"><img src={c.image} alt="" className="aspect-square w-full rounded-md object-cover"/><div><span className="text-[10px] font-bold uppercase text-signal">{ar?"مجاني":"Free"}</span><h3 className="mt-1 font-bold leading-snug">{text(c.title,language)}</h3><p className="mt-2 text-xs text-muted-foreground">{c.platform}</p></div></Link>)}</div></section><section className="mt-12 overflow-hidden rounded-lg bg-foreground p-6 text-background sm:p-9"><div className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_auto]"><div><div className="flex items-center gap-2 text-xs font-bold uppercase text-primary"><Radio className="h-4 w-4"/>{ar?"الموجز اليومي":"Daily Intelligence"}</div><h2 className="mt-3 text-2xl font-bold sm:text-3xl">{ar?"أهم إشارة. كل صباح.":"One essential signal. Every morning."}</h2><p className="mt-2 max-w-xl text-sm leading-6 opacity-70">{ar?"موجز تحريري مركز يساعدك على فهم ما تغير، ولماذا يهم، وما ينبغي متابعته.":"A focused editorial briefing on what changed, why it matters and what to watch next."}</p></div><Button variant="secondary"><Sparkles/>{ar?"اشترك في الموجز":"Get the briefing"}</Button></div></section></div></AppShell>}
+function Stat({value,label}:{value:string;label:string}){return <div className="min-w-24 bg-card p-4 text-center"><strong className="text-xl">{value}</strong><p className="mt-1 text-[10px] text-muted-foreground">{label}</p></div>}
+function StoryList({title,icon,items}:{title:string;icon:React.ReactNode;items:typeof allNews}){const {language}=useApp();return <section><div className="mb-3 flex items-center gap-2 text-xl font-bold text-foreground">{icon}{title}</div><div className="border-t border-border">{items.map(item=><Link key={item.id} to="/article/$id" params={{id:item.id}} className="grid grid-cols-[minmax(0,1fr)_auto] gap-4 border-b border-border py-4"><div><p className="text-[10px] font-bold uppercase text-primary">{text(item.category,language)}</p><h3 className="mt-1 font-bold leading-snug hover:text-primary">{text(item.title,language)}</h3></div><span className="self-end text-xs text-muted-foreground">{item.comments}</span></Link>)}</div></section>}
