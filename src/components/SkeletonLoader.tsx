@@ -1,0 +1,1 @@
+export function SkeletonLoader() { return <div className="grid animate-pulse gap-4 md:grid-cols-3">{[1,2,3].map((n) => <div key={n} className="h-64 rounded-lg bg-muted" />)}</div>; }
