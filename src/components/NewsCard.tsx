@@ -1,0 +1,8 @@
+import { Clock } from "lucide-react";
+import type { NewsItem } from "@/data/mockNews";
+import { CategoryBadge } from "./CategoryBadge";
+import { SaveButton } from "./SaveButton";
+
+export function NewsCard({ item, saved, onSave }: { item: NewsItem; saved: boolean; onSave: () => void }) {
+  return <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-card transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-card-hover">{item.image && <div className="aspect-[3/2] overflow-hidden bg-muted"><img src={item.image} alt="" loading="lazy" width={item.imageWidth} height={item.imageHeight} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025]" /></div>}<div className="flex flex-1 flex-col p-4 sm:p-5"><div className="mb-3 flex items-center justify-between gap-3"><CategoryBadge>{item.category}</CategoryBadge><SaveButton saved={saved} onToggle={onSave} compact /></div><h3 className="text-lg font-bold leading-snug text-foreground">{item.title}</h3><p className="mt-2 line-clamp-2 text-sm leading-5 text-muted-foreground">{item.summary}</p><div className="mt-auto flex items-center justify-between gap-3 pt-5 text-[11px] text-muted-foreground"><span className="truncate font-semibold text-foreground">{item.source}</span><span className="flex shrink-0 items-center gap-1"><Clock className="h-3 w-3" />{item.readTime}</span></div></div></article>;
+}

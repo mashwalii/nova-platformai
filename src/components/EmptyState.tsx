@@ -1,0 +1,2 @@
+import { SearchX } from "lucide-react";
+export function EmptyState() { return <div className="grid min-h-64 place-items-center border border-dashed border-border bg-card p-8 text-center"><div><SearchX className="mx-auto mb-3 text-muted-foreground" /><h3 className="font-semibold text-foreground">No intelligence found</h3><p className="mt-1 text-sm text-muted-foreground">Try another topic or search phrase.</p></div></div>; }

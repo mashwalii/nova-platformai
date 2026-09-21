@@ -1,0 +1,3 @@
+export function PageHeader({ category }: { category: string }) {
+  return <header className="mb-6 border-b border-border pb-5"><p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-primary">Intelligence briefing · Monday, Sep 21</p><div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4"><h1 className="min-w-0 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{category === "All News" ? "Today in AI" : category}</h1><p className="hidden max-w-xs text-right text-xs leading-relaxed text-muted-foreground sm:block">Signal over noise. The developments shaping artificial intelligence, selected by NOVA editors.</p></div></header>;
+}
