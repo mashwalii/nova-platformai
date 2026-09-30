@@ -76,6 +76,15 @@ async def client(app: FastAPI) -> AsyncIterator[httpx.AsyncClient]:
 # --- Database ------------------------------------------------------------------
 
 
+def alembic_head() -> str:
+    """Latest migration revision in alembic/versions."""
+    from alembic.script import ScriptDirectory
+
+    head = ScriptDirectory.from_config(Config(str(BACKEND_DIR / "alembic.ini"))).get_current_head()
+    assert head is not None
+    return head
+
+
 def alembic_config(database_url: str) -> Config:
     config = Config(str(BACKEND_DIR / "alembic.ini"))
     config.attributes["database_url"] = database_url

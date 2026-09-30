@@ -17,6 +17,7 @@ A bilingual (English / العربية) AI information platform: AI news and summ
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | Target architecture (backend, database, AI, search) |
 | [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md) | Step-by-step build plan in phases |
 | [`backend/README.md`](backend/README.md) | Backend developer guide (commands, structure, database, Docker) |
+| [`DATABASE.md`](DATABASE.md) | The database explained in plain language: every table, relationships, seed data |
 | [`docs/ORIGINAL_DESIGN_BRIEF.md`](docs/ORIGINAL_DESIGN_BRIEF.md) | The original Lovable design brief (design-system reference) |
 | [`src/routes/README.md`](src/routes/README.md) | How page routing works |
 
@@ -140,12 +141,12 @@ cd backend
 uv run pytest
 ```
 
-The last line should say **passed** (for example `62 passed, 13 skipped`) and must not mention **failed**. Skipped tests need a separate test database — see [`backend/README.md`](backend/README.md#running-the-database-tests).
+The last line should say **passed** (for example `181 passed, 38 skipped`) and must not mention **failed**. Skipped tests need a separate test database — see [`backend/README.md`](backend/README.md#running-the-database-tests).
 
 ### Optional: settings and database
 
 - Settings: copy `backend/.env.example` to `backend/.env` and edit your copy. **Never commit `.env`.**
-- Database: put your PostgreSQL/Supabase connection string in `backend/.env` as `DATABASE_URL=...`, then run `uv run alembic upgrade head`. Full steps: [`backend/README.md`](backend/README.md#connecting-a-database).
+- Database: put your PostgreSQL/Supabase connection string in `backend/.env` as `DATABASE_URL=...`, then run `uv run alembic upgrade head` (creates the tables) and `uv run python -m app.cli seed` (adds sample data). Full steps: [`DATABASE.md`](DATABASE.md#7-setting-up-a-database).
 
 ---
 

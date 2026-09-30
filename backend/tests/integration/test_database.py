@@ -18,7 +18,7 @@ from app.main import create_app
 from app.models.base import APP_SCHEMA, TimestampMixin, UUIDPrimaryKeyMixin
 from app.repositories.base import BaseRepository
 from app.repositories.system import SystemRepository
-from tests.conftest import make_settings
+from tests.conftest import alembic_head, make_settings
 
 pytestmark = pytest.mark.db
 
@@ -62,7 +62,7 @@ async def test_ready_with_database(database_url: str) -> None:
     body = response.json()
     assert body["status"] == "ok"
     assert body["checks"]["database"]["status"] == "ok"
-    assert body["checks"]["database"]["migration_revision"] == "0001"
+    assert body["checks"]["database"]["migration_revision"] == alembic_head()
     assert body["checks"]["database"]["latency_ms"] >= 0
 
 
@@ -70,7 +70,7 @@ async def test_system_repository(database: Database) -> None:
     async with database.session() as session:
         repository = SystemRepository(session)
         await repository.ping()
-        assert await repository.current_migration_revision() == "0001"
+        assert await repository.current_migration_revision() == alembic_head()
 
 
 async def test_connection_uses_application_name(database: Database) -> None:
@@ -214,4 +214,4 @@ def test_cli_check_db(
     assert cli.main(["check-db"]) == 0
     output = capsys.readouterr().out
     assert "Database connection OK" in output
-    assert "Migration revision: 0001" in output
+    assert f"Migration revision: {alembic_head()}" in output

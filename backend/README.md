@@ -2,7 +2,7 @@
 
 Python + FastAPI backend for NOVA AI. See [`../ARCHITECTURE.md`](../ARCHITECTURE.md) for the overall design and [`../IMPLEMENTATION_PLAN.md`](../IMPLEMENTATION_PLAN.md) for the roadmap.
 
-> **Status: Phase 2 — foundation.** Health checks, configuration, logging, error handling, CORS, database connection layer, migrations, and tests. No product features (news, research, …) yet.
+> **Status: Phase 3 — database.** Foundation (health checks, configuration, logging, error handling, CORS) plus the full database schema (27 tables), migrations and development seed data. See [`../DATABASE.md`](../DATABASE.md). No product API endpoints (news, research, …) yet.
 
 ---
 
@@ -51,6 +51,7 @@ cp .env.example .env
 | `uv run python -m app.cli config` | Show effective configuration (secrets hidden) |
 | `uv run python -m app.cli check-db` | Test the database connection |
 | `uv run python -m app.cli openapi -o openapi.json` | Export the API schema |
+| `uv run python -m app.cli seed` | Load development sample data (refuses in staging/production) |
 
 ---
 
@@ -62,14 +63,15 @@ The backend works without a database; `/ready` then reports `not_configured`. To
    - **Supabase:** Project → *Connect* (or *Project Settings → Database*) → copy the **URI**. Use the *direct* or *session pooler* connection. If you use the *transaction pooler* (port 6543), also set `DATABASE_USE_PGBOUNCER=true`.
    - **Local PostgreSQL:** `postgresql://USER:PASSWORD@localhost:5432/DATABASE`
 2. Put it in `backend/.env`: `DATABASE_URL=postgresql://...` (this file is never committed).
-3. Apply migrations and check:
+3. Create the tables, load sample data, and check:
    ```sh
    uv run alembic upgrade head
+   uv run python -m app.cli seed
    uv run python -m app.cli check-db
    ```
 4. Start the API; `/ready` should now return `"status": "ok"`.
 
-All NOVA tables live in the PostgreSQL schema **`app`**, which is not exposed through Supabase's public data API.
+All NOVA tables live in the PostgreSQL schema **`app`**, which is not exposed through Supabase's public data API. The database needs the **pgvector** extension (built into Supabase; for local PostgreSQL use e.g. the `pgvector/pgvector:pg16` Docker image). Table-by-table explanations: [`../DATABASE.md`](../DATABASE.md).
 
 ---
 
@@ -102,7 +104,8 @@ backend/
 │   │       └── endpoints/   # one module per feature
 │   ├── services/            # business logic
 │   ├── repositories/        # database queries (data access layer)
-│   ├── models/              # SQLAlchemy tables (schema "app")
+│   ├── models/              # SQLAlchemy tables (schema "app") — see DATABASE.md
+│   ├── seed/                # development sample data + loader
 │   └── schemas/             # Pydantic request/response shapes (the API contract)
 ├── alembic/                 # migrations (versions/ holds each change)
 ├── tests/                   # unit/, api/, integration/ (database)
@@ -124,7 +127,7 @@ API route  →  service  →  repository  →  database
 ### Adding an endpoint (example: news)
 
 1. `app/models/news.py` — table; import it in `app/models/__init__.py`.
-2. `uv run alembic revision --autogenerate -m "add news"` → review the generated file.
+2. `uv run alembic revision --autogenerate -m "add news"` → review the generated file, and for new tables add the `updated_at` trigger and Row-Level Security (see `alembic/versions/0002_core_schema.py`; tests fail if you forget).
 3. `app/repositories/news.py` — queries (`class NewsRepository(BaseRepository[News])`).
 4. `app/services/news.py` — business logic.
 5. `app/schemas/news.py` — response shapes.

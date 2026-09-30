@@ -44,7 +44,7 @@ Phase 12 is split into **12A** (connect *existing* pages — can happen right af
 | 0 | Project analysis | — | — | ✅ `PROJECT_ANALYSIS.md` done |
 | 1 | Git and project safety | S | 0 | Safe workflow, CI, baseline screenshots |
 | 2 | Backend foundation | S | 1 | ✅ FastAPI foundation, DB layer, migrations, tests |
-| 3 | Database | M | 2 | Schema + seed data + read-only API |
+| 3 | Database | M | 2 | ✅ Schema (27 tables) + seed data; read-only API still to do |
 | 4 | News aggregation | M | 3 | Real AI news fetched and stored |
 | 5 | Scientific research aggregation | M | 3 | arXiv papers fetched and stored |
 | 6 | Courses and opportunities | M | 3 | Courses, 8 opportunity types incl. Jobs, AI tools |
@@ -126,7 +126,12 @@ Phase 12 is split into **12A** (connect *existing* pages — can happen right af
 
 ---
 
-## Phase 3 — Database
+## Phase 3 — Database ✅ (schema and seed)
+
+**Status:** Schema, migrations and development seed data are complete — see `DATABASE.md`. The final design differs from the sketch below in a few places, for simplicity: `topics` became `categories` + `tags`; `ai_runs`/`job_runs`/`fetch_log` became `processing_logs`, `collection_jobs` and `error_logs`; paper analyses and article briefs share `ai_summaries`; RAG chunks share `embeddings`; `story_clusters` and `audit_log` are deferred (Phases 7 and 14). Verified: migrations apply, roll back and match the models (`alembic check`); seed loads idempotently; 219 automated tests pass against PostgreSQL 16 + pgvector.
+
+**Not yet done (moved):** 3.1's Supabase project must be created by the owner (steps in `DATABASE.md` §7) and a least-privilege database role is deferred to Phase 14/16; the read-only API endpoints, response schemas and generated TypeScript types (3.6, 3.7, 3.9) move to the start of Phase 12A, where they're first used.
+
 
 **Goal:** A real PostgreSQL database with the core schema, filled with today's mock content, served through read-only API endpoints.
 

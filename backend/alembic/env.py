@@ -13,10 +13,12 @@ import asyncio
 from logging.config import fileConfig
 from typing import Any
 
+import sqlalchemy as sa
 from alembic import context
 from sqlalchemy import pool, text
 from sqlalchemy.engine import URL, Connection
 from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.sql.elements import conv
 
 import app.models  # noqa: F401 - registers every model on Base.metadata
 from app.core.config import get_settings, normalize_database_url
@@ -44,6 +46,26 @@ def _include_name(name: str | None, type_: str, parent_names: Any) -> bool:
     return True
 
 
+def _render_item(type_: str, obj: Any, autogen_context: Any) -> Any:
+    """Customise how autogenerate writes some objects into migration files.
+
+    Our "enum" columns are VARCHAR + a CHECK constraint (see app/models/enums.py).
+    Alembic would otherwise write the CHECK constraint several times (once via the
+    column type, again as table constraints), so the column is rendered as a
+    plain String and only the named table-level constraint is kept.
+
+    Returns a string (custom rendering), False (Alembic's default), or None to
+    omit a constraint (supported by Alembic, though not in its type hints).
+    """
+    if type_ == "type" and isinstance(obj, sa.Enum) and not obj.native_enum:
+        return f"sa.String(length={obj.length})"
+    if type_ == "check" and isinstance(obj, sa.CheckConstraint):
+        name = obj.name
+        if name is not None and not isinstance(name, conv) and getattr(obj, "_type_bound", False):
+            return None  # skip: unconverted duplicate of a type-bound constraint
+    return False
+
+
 def _configure(**kwargs: Any) -> None:
     context.configure(
         target_metadata=target_metadata,
@@ -51,6 +73,7 @@ def _configure(**kwargs: Any) -> None:
         include_schemas=True,
         include_name=_include_name,
         compare_type=True,
+        render_item=_render_item,
         **kwargs,
     )
 

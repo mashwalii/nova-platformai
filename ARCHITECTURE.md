@@ -241,6 +241,8 @@ Why a single repository ("monorepo"): one place to review changes, frontend and 
 
 ## 6. Data Model
 
+> **Implemented in Phase 3.** [`DATABASE.md`](DATABASE.md) is the authoritative, table-by-table description; this section is the original design sketch. Main differences: topics are `categories` + `tags`; AI run records are `processing_logs`; job records are `collection_jobs`; errors are `error_logs`; RAG chunks live in `embeddings`.
+
 ### 6.1 Core idea: one "content item" table + type-specific detail tables
 
 Every piece of content — article, paper, course, opportunity, tool, briefing — gets **one row in `content_items`** with the common fields (title, summary, URL, dates, language, status, search vectors, embedding). Type-specific fields live in a detail table linked 1-to-1.

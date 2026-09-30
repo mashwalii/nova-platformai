@@ -1,0 +1,2218 @@
+{
+  "about": "NOVA AI development seed data. Articles, courses, opportunities and learning paths mirror the frontend's sample data (src/data/*.ts); papers and tools reference real public projects with summaries written by NOVA; people, jobs and logs are fictional. Never load into production.",
+  "sources": [
+    {
+      "slug": "nova-intelligence",
+      "name": "NOVA Intelligence",
+      "kind": "manual",
+      "trust_level": 3,
+      "is_active": false,
+      "config": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "financial-ledger",
+      "name": "Financial Ledger",
+      "kind": "manual",
+      "trust_level": 3,
+      "is_active": false,
+      "config": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "arxiv-daily",
+      "name": "Arxiv Daily",
+      "kind": "manual",
+      "trust_level": 3,
+      "is_active": false,
+      "config": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "policy-wire",
+      "name": "Policy Wire",
+      "kind": "manual",
+      "trust_level": 3,
+      "is_active": false,
+      "config": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "model-review",
+      "name": "Model Review",
+      "kind": "manual",
+      "trust_level": 3,
+      "is_active": false,
+      "config": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "robotics-lab",
+      "name": "Robotics Lab",
+      "kind": "manual",
+      "trust_level": 3,
+      "is_active": false,
+      "config": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "circuit",
+      "name": "Circuit",
+      "kind": "manual",
+      "trust_level": 3,
+      "is_active": false,
+      "config": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "arxiv-ai",
+      "name": "arXiv (AI categories)",
+      "kind": "arxiv",
+      "homepage_url": "https://arxiv.org/",
+      "feed_url": "https://export.arxiv.org/api/query",
+      "trust_level": 5,
+      "is_active": false,
+      "fetch_interval_minutes": 1440,
+      "config": {
+        "categories": [
+          "cs.AI",
+          "cs.LG",
+          "cs.CL",
+          "cs.CV",
+          "cs.RO",
+          "stat.ML"
+        ]
+      }
+    },
+    {
+      "slug": "hugging-face-blog",
+      "name": "Hugging Face Blog",
+      "kind": "rss",
+      "homepage_url": "https://huggingface.co/blog",
+      "feed_url": "https://huggingface.co/blog/feed.xml",
+      "trust_level": 4,
+      "is_active": false,
+      "fetch_interval_minutes": 60,
+      "config": {}
+    },
+    {
+      "slug": "nova-editors",
+      "name": "NOVA Editors",
+      "kind": "manual",
+      "trust_level": 5,
+      "is_active": true,
+      "config": {}
+    }
+  ],
+  "categories": [
+    {
+      "slug": "breaking-news",
+      "name": {
+        "en": "Breaking News",
+        "ar": "عاجل"
+      },
+      "content_type": null,
+      "sort_order": 1
+    },
+    {
+      "slug": "ai-research",
+      "name": {
+        "en": "AI Research",
+        "ar": "أبحاث الذكاء الاصطناعي"
+      },
+      "content_type": null,
+      "sort_order": 2
+    },
+    {
+      "slug": "generative-ai",
+      "name": {
+        "en": "Generative AI",
+        "ar": "الذكاء التوليدي"
+      },
+      "content_type": null,
+      "sort_order": 3
+    },
+    {
+      "slug": "ai-models",
+      "name": {
+        "en": "AI Models",
+        "ar": "نماذج الذكاء الاصطناعي"
+      },
+      "content_type": null,
+      "sort_order": 4
+    },
+    {
+      "slug": "ai-agents",
+      "name": {
+        "en": "AI Agents",
+        "ar": "وكلاء الذكاء الاصطناعي"
+      },
+      "content_type": null,
+      "sort_order": 5
+    },
+    {
+      "slug": "robotics",
+      "name": {
+        "en": "Robotics",
+        "ar": "الروبوتات"
+      },
+      "content_type": null,
+      "sort_order": 6
+    },
+    {
+      "slug": "computer-vision",
+      "name": {
+        "en": "Computer Vision",
+        "ar": "الرؤية الحاسوبية"
+      },
+      "content_type": null,
+      "sort_order": 7
+    },
+    {
+      "slug": "open-source",
+      "name": {
+        "en": "Open Source",
+        "ar": "المصدر المفتوح"
+      },
+      "content_type": null,
+      "sort_order": 8
+    },
+    {
+      "slug": "ai-companies",
+      "name": {
+        "en": "AI Companies",
+        "ar": "شركات الذكاء الاصطناعي"
+      },
+      "content_type": null,
+      "sort_order": 9
+    },
+    {
+      "slug": "ai-tools",
+      "name": {
+        "en": "AI Tools",
+        "ar": "أدوات الذكاء الاصطناعي"
+      },
+      "content_type": null,
+      "sort_order": 10
+    },
+    {
+      "slug": "ai-safety",
+      "name": {
+        "en": "AI Safety",
+        "ar": "سلامة الذكاء الاصطناعي"
+      },
+      "content_type": null,
+      "sort_order": 11
+    },
+    {
+      "slug": "ai-policy",
+      "name": {
+        "en": "AI Policy",
+        "ar": "السياسات"
+      },
+      "content_type": null,
+      "sort_order": 12
+    },
+    {
+      "slug": "ai-funding",
+      "name": {
+        "en": "AI Funding",
+        "ar": "تمويل الذكاء الاصطناعي"
+      },
+      "content_type": null,
+      "sort_order": 13
+    },
+    {
+      "slug": "course-programming",
+      "name": {
+        "en": "Programming",
+        "ar": "البرمجة"
+      },
+      "content_type": "course",
+      "sort_order": 1
+    },
+    {
+      "slug": "course-ai",
+      "name": {
+        "en": "AI",
+        "ar": "الذكاء الاصطناعي"
+      },
+      "content_type": "course",
+      "sort_order": 2
+    },
+    {
+      "slug": "course-machine-learning",
+      "name": {
+        "en": "Machine Learning",
+        "ar": "تعلم الآلة"
+      },
+      "content_type": "course",
+      "sort_order": 3
+    },
+    {
+      "slug": "course-data-science",
+      "name": {
+        "en": "Data Science",
+        "ar": "علم البيانات"
+      },
+      "content_type": "course",
+      "sort_order": 4
+    },
+    {
+      "slug": "course-computer-science",
+      "name": {
+        "en": "Computer Science",
+        "ar": "علوم الحاسب"
+      },
+      "content_type": "course",
+      "sort_order": 5
+    },
+    {
+      "slug": "course-mathematics",
+      "name": {
+        "en": "Mathematics",
+        "ar": "الرياضيات"
+      },
+      "content_type": "course",
+      "sort_order": 6
+    },
+    {
+      "slug": "course-web-development",
+      "name": {
+        "en": "Web Development",
+        "ar": "تطوير الويب"
+      },
+      "content_type": "course",
+      "sort_order": 7
+    },
+    {
+      "slug": "course-cybersecurity",
+      "name": {
+        "en": "Cybersecurity",
+        "ar": "الأمن السيبراني"
+      },
+      "content_type": "course",
+      "sort_order": 8
+    }
+  ],
+  "tags": [
+    {
+      "slug": "multimodal",
+      "name": {
+        "en": "Multimodal",
+        "ar": "متعدد الوسائط"
+      }
+    },
+    {
+      "slug": "reasoning",
+      "name": {
+        "en": "Reasoning",
+        "ar": "الاستدلال"
+      }
+    },
+    {
+      "slug": "funding",
+      "name": {
+        "en": "Funding",
+        "ar": "التمويل"
+      }
+    },
+    {
+      "slug": "compute",
+      "name": {
+        "en": "Compute",
+        "ar": "الحوسبة"
+      }
+    },
+    {
+      "slug": "benchmarks",
+      "name": {
+        "en": "Benchmarks",
+        "ar": "معايير التقييم"
+      }
+    },
+    {
+      "slug": "agents",
+      "name": {
+        "en": "Agents",
+        "ar": "الوكلاء"
+      }
+    },
+    {
+      "slug": "ai-safety",
+      "name": {
+        "en": "AI Safety",
+        "ar": "سلامة الذكاء الاصطناعي"
+      }
+    },
+    {
+      "slug": "regulation",
+      "name": {
+        "en": "Regulation",
+        "ar": "التنظيم"
+      }
+    },
+    {
+      "slug": "open-weights",
+      "name": {
+        "en": "Open weights",
+        "ar": "الأوزان المفتوحة"
+      }
+    },
+    {
+      "slug": "robotics",
+      "name": {
+        "en": "Robotics",
+        "ar": "الروبوتات"
+      }
+    },
+    {
+      "slug": "hardware",
+      "name": {
+        "en": "Hardware",
+        "ar": "العتاد"
+      }
+    },
+    {
+      "slug": "transformers",
+      "name": {
+        "en": "Transformers",
+        "ar": "المحوّلات"
+      }
+    },
+    {
+      "slug": "llm",
+      "name": {
+        "en": "Large language models",
+        "ar": "النماذج اللغوية الكبيرة"
+      }
+    },
+    {
+      "slug": "python",
+      "name": {
+        "en": "Python",
+        "ar": "بايثون"
+      }
+    }
+  ],
+  "authors": [
+    {
+      "slug": "maya-chen",
+      "name": "Maya Chen",
+      "name_ar": "مايا تشين"
+    },
+    {
+      "slug": "jon-bell",
+      "name": "Jon Bell",
+      "name_ar": "جون بيل"
+    },
+    {
+      "slug": "rina-patel",
+      "name": "Rina Patel",
+      "name_ar": "رينا باتيل"
+    },
+    {
+      "slug": "sara-malik",
+      "name": "Sara Malik",
+      "name_ar": "سارة مالك"
+    },
+    {
+      "slug": "noah-kim",
+      "name": "Noah Kim",
+      "name_ar": "نواه كيم"
+    },
+    {
+      "slug": "eli-stone",
+      "name": "Eli Stone",
+      "name_ar": "إيلي ستون"
+    },
+    {
+      "slug": "amir-haddad",
+      "name": "Amir Haddad",
+      "name_ar": "أمير حداد"
+    },
+    {
+      "slug": "ashish-vaswani",
+      "name": "Ashish Vaswani"
+    },
+    {
+      "slug": "noam-shazeer",
+      "name": "Noam Shazeer"
+    },
+    {
+      "slug": "niki-parmar",
+      "name": "Niki Parmar"
+    },
+    {
+      "slug": "tom-b-brown",
+      "name": "Tom B. Brown"
+    },
+    {
+      "slug": "benjamin-mann",
+      "name": "Benjamin Mann"
+    },
+    {
+      "slug": "nick-ryder",
+      "name": "Nick Ryder"
+    }
+  ],
+  "articles": [
+    {
+      "slug": "multimodal-reasoning",
+      "title": {
+        "en": "A new multimodal system learns to reason across sight, sound and language",
+        "ar": "نظام متعدد الوسائط يتعلم الاستدلال عبر الصورة والصوت واللغة"
+      },
+      "summary": {
+        "en": "Researchers report a step-change in how foundation models connect visual evidence, spoken context and structured logic—without sacrificing response speed.",
+        "ar": "أعلن باحثون عن تقدم نوعي في قدرة النماذج الأساسية على ربط الأدلة المرئية والسياق الصوتي والمنطق المنظم دون التضحية بسرعة الاستجابة."
+      },
+      "category": "ai-research",
+      "source": "nova-intelligence",
+      "authors": [
+        "maya-chen"
+      ],
+      "tags": [
+        "multimodal",
+        "reasoning"
+      ],
+      "canonical_url": "https://arxiv.org/",
+      "published_at": "2026-09-21T06:00:00Z",
+      "source_updated_at": "2026-09-21T08:32:00Z",
+      "reading_minutes": 6,
+      "view_count": 12800,
+      "importance": 5,
+      "is_featured": true,
+      "is_trending": true,
+      "extra": {
+        "image_asset": "nova-reasoning-lab.jpg",
+        "image_width": 1600,
+        "image_height": 1000,
+        "legacy_comment_count": 184
+      },
+      "brief": {
+        "en": {
+          "tldr": "The system combines images, audio and text in one reasoning loop. It outperformed specialist models on cross-modal tasks while keeping latency low. The result could make assistants more reliable in real-world environments.",
+          "key_points": [
+            "One model reasons across three data types",
+            "Cross-modal accuracy improved by 18%",
+            "Inference remains fast enough for live use"
+          ],
+          "why_it_matters": "Most real decisions rely on more than text. A system that can reconcile what it sees, hears and reads may unlock safer robotics, accessibility tools and clinical support.",
+          "sections": {
+            "what_happened": [
+              "The research team trained a shared reasoning layer instead of connecting separate vision and audio tools after the fact.",
+              "In controlled evaluations, the model identified conflicting evidence and explained which signal it trusted.",
+              "The team released evaluation details, but model weights remain under review."
+            ],
+            "metrics": [
+              {
+                "value": "+18%",
+                "label": "cross-modal accuracy"
+              },
+              {
+                "value": "42ms",
+                "label": "median latency"
+              },
+              {
+                "value": "24",
+                "label": "evaluation domains"
+              }
+            ],
+            "quote": "The breakthrough is not seeing or hearing better—it is knowing when those signals disagree.",
+            "timeline": [
+              {
+                "time": "08:00 UTC",
+                "title": "Research released",
+                "description": "The team published its paper, model card and evaluation results."
+              },
+              {
+                "time": "11:30 UTC",
+                "title": "Independent checks begin",
+                "description": "External researchers started reproducing the headline findings."
+              },
+              {
+                "time": "16:15 UTC",
+                "title": "Industry response",
+                "description": "Developers and policy teams published their first assessments."
+              }
+            ]
+          }
+        },
+        "ar": {
+          "tldr": "يجمع النظام الصور والصوت والنص في دورة استدلال واحدة. وتفوّق على نماذج متخصصة في مهام متعددة الوسائط مع الحفاظ على سرعة الاستجابة، ما قد يجعل المساعدات الذكية أكثر موثوقية في البيئات الواقعية.",
+          "key_points": [
+            "نموذج واحد يستدل عبر ثلاثة أنواع من البيانات",
+            "تحسنت الدقة متعددة الوسائط بنسبة 18%",
+            "سرعة الاستدلال مناسبة للاستخدام المباشر"
+          ],
+          "why_it_matters": "تعتمد معظم القرارات الواقعية على أكثر من النص. وقد يفتح النظام القادر على التوفيق بين ما يراه ويسمعه ويقرأه آفاقًا جديدة للروبوتات الآمنة وأدوات الوصول والدعم السريري.",
+          "sections": {
+            "what_happened": [
+              "درّب فريق البحث طبقة استدلال مشتركة بدلًا من ربط أدوات منفصلة للرؤية والصوت لاحقًا.",
+              "في الاختبارات المنضبطة، تعرّف النموذج على الأدلة المتعارضة وشرح الإشارة التي اعتمد عليها.",
+              "أصدر الفريق تفاصيل التقييم، بينما لا تزال أوزان النموذج قيد المراجعة."
+            ],
+            "metrics": [
+              {
+                "value": "+18%",
+                "label": "دقة متعددة الوسائط"
+              },
+              {
+                "value": "42ms",
+                "label": "متوسط زمن الاستجابة"
+              },
+              {
+                "value": "24",
+                "label": "مجالًا للتقييم"
+              }
+            ],
+            "quote": "الاختراق ليس في تحسين الرؤية أو السمع، بل في معرفة متى تتعارض هذه الإشارات.",
+            "timeline": [
+              {
+                "time": "08:00 بتوقيت غرينتش",
+                "title": "نشر البحث",
+                "description": "نشر الفريق الورقة العلمية وبطاقة النموذج ونتائج التقييم."
+              },
+              {
+                "time": "11:30 بتوقيت غرينتش",
+                "title": "بدء التحقق المستقل",
+                "description": "بدأ باحثون مستقلون في إعادة اختبار النتائج الرئيسية."
+              },
+              {
+                "time": "16:15 بتوقيت غرينتش",
+                "title": "استجابة القطاع",
+                "description": "نشرت فرق التطوير والسياسات تقييماتها الأولية."
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "compute-fund",
+      "title": {
+        "en": "VectorGrid closes $480M fund for frontier compute infrastructure",
+        "ar": "VectorGrid تغلق صندوقًا بقيمة 480 مليون دولار لبنية الحوسبة المتقدمة"
+      },
+      "summary": {
+        "en": "The new vehicle will back energy-efficient data centers and custom inference hardware.",
+        "ar": "سيدعم الصندوق مراكز بيانات موفرة للطاقة وعتادًا مخصصًا للاستدلال."
+      },
+      "category": "ai-funding",
+      "source": "financial-ledger",
+      "authors": [
+        "jon-bell"
+      ],
+      "tags": [
+        "funding",
+        "compute"
+      ],
+      "canonical_url": "https://example.com/",
+      "published_at": "2026-09-21T05:30:00Z",
+      "source_updated_at": "2026-09-21T08:18:00Z",
+      "reading_minutes": 3,
+      "view_count": 9200,
+      "importance": 3,
+      "is_featured": false,
+      "is_trending": true,
+      "extra": {
+        "image_asset": "nova-chips.jpg",
+        "image_width": 1200,
+        "image_height": 800,
+        "legacy_comment_count": 73
+      },
+      "brief": {
+        "en": {
+          "tldr": "VectorGrid has raised a major infrastructure fund focused on efficient AI compute. The capital will target data centers, cooling and inference chips.",
+          "key_points": [
+            "$480M committed at first close",
+            "Efficiency is the core investment thesis",
+            "First deployments begin next quarter"
+          ],
+          "why_it_matters": "Compute access increasingly determines who can build and deploy competitive AI systems.",
+          "sections": {
+            "what_happened": [
+              "Institutional investors backed a new fund for AI infrastructure.",
+              "The fund will prioritize regions with abundant renewable power."
+            ],
+            "metrics": [
+              {
+                "value": "$480M",
+                "label": "fund size"
+              },
+              {
+                "value": "8",
+                "label": "planned sites"
+              },
+              {
+                "value": "35%",
+                "label": "energy target"
+              }
+            ],
+            "quote": "The next compute race will be won on efficiency, not raw scale.",
+            "timeline": [
+              {
+                "time": "08:00 UTC",
+                "title": "Research released",
+                "description": "The team published its paper, model card and evaluation results."
+              },
+              {
+                "time": "11:30 UTC",
+                "title": "Independent checks begin",
+                "description": "External researchers started reproducing the headline findings."
+              },
+              {
+                "time": "16:15 UTC",
+                "title": "Industry response",
+                "description": "Developers and policy teams published their first assessments."
+              }
+            ]
+          }
+        },
+        "ar": {
+          "tldr": "جمعت VectorGrid صندوق بنية تحتية كبيرًا يركز على حوسبة الذكاء الاصطناعي الفعالة، وسيستهدف مراكز البيانات والتبريد وشرائح الاستدلال.",
+          "key_points": [
+            "التزام بقيمة 480 مليون دولار",
+            "الكفاءة هي محور استراتيجية الاستثمار",
+            "بدء أولى عمليات النشر في الربع القادم"
+          ],
+          "why_it_matters": "تحدد القدرة على الوصول إلى الحوسبة بصورة متزايدة من يستطيع بناء أنظمة ذكاء اصطناعي تنافسية ونشرها.",
+          "sections": {
+            "what_happened": [
+              "دعم مستثمرون مؤسسيون صندوقًا جديدًا لبنية الذكاء الاصطناعي.",
+              "سيعطي الصندوق الأولوية للمناطق ذات الطاقة المتجددة الوفيرة."
+            ],
+            "metrics": [
+              {
+                "value": "$480M",
+                "label": "حجم الصندوق"
+              },
+              {
+                "value": "8",
+                "label": "مواقع مخطط لها"
+              },
+              {
+                "value": "35%",
+                "label": "هدف خفض الطاقة"
+              }
+            ],
+            "quote": "سيُحسم سباق الحوسبة القادم بالكفاءة لا بالحجم الخام.",
+            "timeline": [
+              {
+                "time": "08:00 بتوقيت غرينتش",
+                "title": "نشر البحث",
+                "description": "نشر الفريق الورقة العلمية وبطاقة النموذج ونتائج التقييم."
+              },
+              {
+                "time": "11:30 بتوقيت غرينتش",
+                "title": "بدء التحقق المستقل",
+                "description": "بدأ باحثون مستقلون في إعادة اختبار النتائج الرئيسية."
+              },
+              {
+                "time": "16:15 بتوقيت غرينتش",
+                "title": "استجابة القطاع",
+                "description": "نشرت فرق التطوير والسياسات تقييماتها الأولية."
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "benchmark",
+      "title": {
+        "en": "Benchmark exposes hidden gaps in long-horizon agent planning",
+        "ar": "معيار جديد يكشف فجوات خفية في تخطيط الوكلاء طويل الأمد"
+      },
+      "summary": {
+        "en": "A 1,200-task evaluation finds even leading agents struggle to recover from early mistakes.",
+        "ar": "يكشف تقييم يضم 1200 مهمة أن الوكلاء الرائدين يواجهون صعوبة في التعافي من الأخطاء المبكرة."
+      },
+      "category": "ai-agents",
+      "source": "arxiv-daily",
+      "authors": [
+        "rina-patel"
+      ],
+      "tags": [
+        "benchmarks",
+        "agents"
+      ],
+      "canonical_url": "https://arxiv.org/",
+      "published_at": "2026-09-21T05:00:00Z",
+      "source_updated_at": "2026-09-21T08:00:00Z",
+      "reading_minutes": 5,
+      "view_count": 7600,
+      "importance": 4,
+      "is_featured": false,
+      "is_trending": false,
+      "extra": {
+        "image_asset": "nova-open-model.jpg",
+        "image_width": 1200,
+        "image_height": 800,
+        "legacy_comment_count": 241
+      },
+      "brief": {
+        "en": {
+          "tldr": "A demanding benchmark shows that autonomous agents often compound small early errors. Recovery and replanning remain the largest weaknesses.",
+          "key_points": [
+            "1,200 real-world tasks tested",
+            "Recovery trails planning ability",
+            "Transparent traces improve diagnosis"
+          ],
+          "why_it_matters": "Agents cannot be trusted with consequential work until they reliably notice and repair their own mistakes.",
+          "sections": {
+            "what_happened": [
+              "Researchers designed tasks lasting from 20 minutes to several hours.",
+              "Leading systems failed most often after an incorrect assumption went unchallenged."
+            ],
+            "metrics": [
+              {
+                "value": "1,200",
+                "label": "tasks"
+              },
+              {
+                "value": "31%",
+                "label": "full completion"
+              },
+              {
+                "value": "2.4×",
+                "label": "error compounding"
+              }
+            ],
+            "quote": "A good plan is not enough; resilient agents need to know when the plan has failed.",
+            "timeline": [
+              {
+                "time": "08:00 UTC",
+                "title": "Research released",
+                "description": "The team published its paper, model card and evaluation results."
+              },
+              {
+                "time": "11:30 UTC",
+                "title": "Independent checks begin",
+                "description": "External researchers started reproducing the headline findings."
+              },
+              {
+                "time": "16:15 UTC",
+                "title": "Industry response",
+                "description": "Developers and policy teams published their first assessments."
+              }
+            ]
+          }
+        },
+        "ar": {
+          "tldr": "يُظهر معيار صارم أن الوكلاء المستقلين يراكمون الأخطاء الصغيرة المبكرة، وأن التعافي وإعادة التخطيط لا يزالان أكبر نقاط الضعف.",
+          "key_points": [
+            "اختبار 1200 مهمة واقعية",
+            "التعافي يتأخر عن قدرة التخطيط",
+            "المسارات الشفافة تحسن التشخيص"
+          ],
+          "why_it_matters": "لا يمكن الوثوق بالوكلاء في الأعمال الحساسة حتى يتمكنوا من اكتشاف أخطائهم وإصلاحها بثبات.",
+          "sections": {
+            "what_happened": [
+              "صمم الباحثون مهامًا تمتد من 20 دقيقة إلى عدة ساعات.",
+              "فشلت الأنظمة الرائدة غالبًا بعد استمرار افتراض خاطئ دون مراجعة."
+            ],
+            "metrics": [
+              {
+                "value": "1,200",
+                "label": "مهمة"
+              },
+              {
+                "value": "31%",
+                "label": "إتمام كامل"
+              },
+              {
+                "value": "2.4×",
+                "label": "تراكم الأخطاء"
+              }
+            ],
+            "quote": "الخطة الجيدة لا تكفي؛ يحتاج الوكيل المرن إلى معرفة متى فشلت خطته.",
+            "timeline": [
+              {
+                "time": "08:00 بتوقيت غرينتش",
+                "title": "نشر البحث",
+                "description": "نشر الفريق الورقة العلمية وبطاقة النموذج ونتائج التقييم."
+              },
+              {
+                "time": "11:30 بتوقيت غرينتش",
+                "title": "بدء التحقق المستقل",
+                "description": "بدأ باحثون مستقلون في إعادة اختبار النتائج الرئيسية."
+              },
+              {
+                "time": "16:15 بتوقيت غرينتش",
+                "title": "استجابة القطاع",
+                "description": "نشرت فرق التطوير والسياسات تقييماتها الأولية."
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "policy",
+      "title": {
+        "en": "Global safety framework moves from principles to audits",
+        "ar": "إطار السلامة العالمي ينتقل من المبادئ إلى عمليات التدقيق"
+      },
+      "summary": {
+        "en": "The voluntary standard introduces shared reporting thresholds for frontier labs.",
+        "ar": "يقدم المعيار الطوعي حدودًا مشتركة للإبلاغ لدى مختبرات النماذج المتقدمة."
+      },
+      "category": "ai-policy",
+      "source": "policy-wire",
+      "authors": [
+        "sara-malik"
+      ],
+      "tags": [
+        "ai-safety",
+        "regulation"
+      ],
+      "canonical_url": "https://example.com/",
+      "published_at": "2026-09-21T04:30:00Z",
+      "source_updated_at": "2026-09-21T07:00:00Z",
+      "reading_minutes": 4,
+      "view_count": 5900,
+      "importance": 5,
+      "is_featured": false,
+      "is_trending": false,
+      "extra": {
+        "image_asset": "nova-reasoning-lab.jpg",
+        "image_width": 1600,
+        "image_height": 1000,
+        "legacy_comment_count": 318
+      },
+      "brief": {
+        "en": {
+          "tldr": "A global safety initiative has translated broad promises into measurable audits. Frontier labs will report against shared capability thresholds.",
+          "key_points": [
+            "Shared reporting thresholds",
+            "Independent audit pathway",
+            "Voluntary first phase"
+          ],
+          "why_it_matters": "Comparable evidence can make safety commitments easier to verify and harder to dilute.",
+          "sections": {
+            "what_happened": [
+              "Twelve labs agreed to common evaluation disclosures.",
+              "Independent auditors will pilot the framework this year."
+            ],
+            "metrics": [
+              {
+                "value": "12",
+                "label": "participating labs"
+              },
+              {
+                "value": "6",
+                "label": "risk domains"
+              },
+              {
+                "value": "Q4",
+                "label": "first audits"
+              }
+            ],
+            "quote": "Principles matter only when evidence can prove they changed practice.",
+            "timeline": [
+              {
+                "time": "08:00 UTC",
+                "title": "Research released",
+                "description": "The team published its paper, model card and evaluation results."
+              },
+              {
+                "time": "11:30 UTC",
+                "title": "Independent checks begin",
+                "description": "External researchers started reproducing the headline findings."
+              },
+              {
+                "time": "16:15 UTC",
+                "title": "Industry response",
+                "description": "Developers and policy teams published their first assessments."
+              }
+            ]
+          }
+        },
+        "ar": {
+          "tldr": "حوّلت مبادرة عالمية للسلامة الوعود العامة إلى عمليات تدقيق قابلة للقياس، وستبلغ المختبرات المتقدمة وفق حدود قدرات مشتركة.",
+          "key_points": [
+            "حدود مشتركة للإبلاغ",
+            "مسار تدقيق مستقل",
+            "مرحلة أولى طوعية"
+          ],
+          "why_it_matters": "يمكن للأدلة القابلة للمقارنة أن تجعل التزامات السلامة أسهل في التحقق وأصعب في التخفيف.",
+          "sections": {
+            "what_happened": [
+              "وافقت اثنتا عشرة جهة على إفصاحات تقييم مشتركة.",
+              "سيختبر مدققون مستقلون الإطار هذا العام."
+            ],
+            "metrics": [
+              {
+                "value": "12",
+                "label": "مختبرًا مشاركًا"
+              },
+              {
+                "value": "6",
+                "label": "مجالات مخاطر"
+              },
+              {
+                "value": "Q4",
+                "label": "أول تدقيق"
+              }
+            ],
+            "quote": "لا قيمة للمبادئ ما لم تثبت الأدلة أنها غيّرت الممارسة.",
+            "timeline": [
+              {
+                "time": "08:00 بتوقيت غرينتش",
+                "title": "نشر البحث",
+                "description": "نشر الفريق الورقة العلمية وبطاقة النموذج ونتائج التقييم."
+              },
+              {
+                "time": "11:30 بتوقيت غرينتش",
+                "title": "بدء التحقق المستقل",
+                "description": "بدأ باحثون مستقلون في إعادة اختبار النتائج الرئيسية."
+              },
+              {
+                "time": "16:15 بتوقيت غرينتش",
+                "title": "استجابة القطاع",
+                "description": "نشرت فرق التطوير والسياسات تقييماتها الأولية."
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "open-weights",
+      "title": {
+        "en": "Open-weight model rivals proprietary systems on reasoning",
+        "ar": "نموذج مفتوح الأوزان ينافس الأنظمة المغلقة في الاستدلال"
+      },
+      "summary": {
+        "en": "A compact architecture is changing the economics of advanced model deployment.",
+        "ar": "بنية مدمجة تغيّر اقتصاديات نشر النماذج المتقدمة."
+      },
+      "category": "open-source",
+      "source": "model-review",
+      "authors": [
+        "noah-kim"
+      ],
+      "tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "canonical_url": "https://huggingface.co/",
+      "published_at": "2026-09-21T04:00:00Z",
+      "source_updated_at": "2026-09-21T06:00:00Z",
+      "reading_minutes": 7,
+      "view_count": 8400,
+      "importance": 4,
+      "is_featured": false,
+      "is_trending": false,
+      "extra": {
+        "image_asset": "nova-open-model.jpg",
+        "image_width": 1200,
+        "image_height": 800,
+        "legacy_comment_count": 96
+      },
+      "brief": {
+        "en": {
+          "tldr": "A smaller open model matches larger closed systems on several reasoning tests. Its permissive release could lower deployment costs.",
+          "key_points": [
+            "Strong reasoning at compact scale",
+            "Runs on accessible hardware",
+            "Permissive research license"
+          ],
+          "why_it_matters": "Capable open models broaden access and let organizations inspect how systems behave.",
+          "sections": {
+            "what_happened": [
+              "The team released weights and evaluation code.",
+              "Independent tests broadly confirmed the reported results."
+            ],
+            "metrics": [
+              {
+                "value": "32B",
+                "label": "parameters"
+              },
+              {
+                "value": "87%",
+                "label": "reasoning score"
+              },
+              {
+                "value": "1×GPU",
+                "label": "local setup"
+              }
+            ],
+            "quote": "Capability is becoming less tied to model size.",
+            "timeline": [
+              {
+                "time": "08:00 UTC",
+                "title": "Research released",
+                "description": "The team published its paper, model card and evaluation results."
+              },
+              {
+                "time": "11:30 UTC",
+                "title": "Independent checks begin",
+                "description": "External researchers started reproducing the headline findings."
+              },
+              {
+                "time": "16:15 UTC",
+                "title": "Industry response",
+                "description": "Developers and policy teams published their first assessments."
+              }
+            ]
+          }
+        },
+        "ar": {
+          "tldr": "يطابق نموذج مفتوح أصغر أنظمة مغلقة أكبر في اختبارات استدلال عدة، وقد يخفّض ترخيصه المرن تكاليف النشر.",
+          "key_points": [
+            "استدلال قوي بحجم مدمج",
+            "يعمل على عتاد متاح",
+            "ترخيص بحثي مرن"
+          ],
+          "why_it_matters": "توسع النماذج المفتوحة القادرة نطاق الوصول وتتيح للمؤسسات فحص سلوك الأنظمة.",
+          "sections": {
+            "what_happened": [
+              "أصدر الفريق الأوزان وشيفرة التقييم.",
+              "أكدت اختبارات مستقلة النتائج المعلنة بصورة عامة."
+            ],
+            "metrics": [
+              {
+                "value": "32B",
+                "label": "معلمة"
+              },
+              {
+                "value": "87%",
+                "label": "درجة الاستدلال"
+              },
+              {
+                "value": "1×GPU",
+                "label": "إعداد محلي"
+              }
+            ],
+            "quote": "لم تعد القدرة مرتبطة بحجم النموذج كما كانت.",
+            "timeline": [
+              {
+                "time": "08:00 بتوقيت غرينتش",
+                "title": "نشر البحث",
+                "description": "نشر الفريق الورقة العلمية وبطاقة النموذج ونتائج التقييم."
+              },
+              {
+                "time": "11:30 بتوقيت غرينتش",
+                "title": "بدء التحقق المستقل",
+                "description": "بدأ باحثون مستقلون في إعادة اختبار النتائج الرئيسية."
+              },
+              {
+                "time": "16:15 بتوقيت غرينتش",
+                "title": "استجابة القطاع",
+                "description": "نشرت فرق التطوير والسياسات تقييماتها الأولية."
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "robot-learning",
+      "title": {
+        "en": "Robots learn delicate assembly from a single demonstration",
+        "ar": "روبوتات تتعلم التجميع الدقيق من عرض واحد"
+      },
+      "summary": {
+        "en": "A new training method transfers dexterity across unfamiliar tools and environments.",
+        "ar": "تنقل طريقة تدريب جديدة المهارة الحركية بين أدوات وبيئات غير مألوفة."
+      },
+      "category": "robotics",
+      "source": "robotics-lab",
+      "authors": [
+        "eli-stone"
+      ],
+      "tags": [
+        "robotics"
+      ],
+      "canonical_url": "https://example.com/",
+      "published_at": "2026-09-21T03:30:00Z",
+      "source_updated_at": "2026-09-21T05:00:00Z",
+      "reading_minutes": 5,
+      "view_count": 6200,
+      "importance": 3,
+      "is_featured": false,
+      "is_trending": true,
+      "extra": {
+        "image_asset": "nova.jpg",
+        "image_width": 1200,
+        "image_height": 800,
+        "legacy_comment_count": 171
+      },
+      "brief": {
+        "en": {
+          "tldr": "A robot can now learn delicate assembly by watching one expert example. The technique adapts the motion to new tools and workspaces.",
+          "key_points": [
+            "Single demonstration learning",
+            "Transfers across tools",
+            "Fewer damaged parts"
+          ],
+          "why_it_matters": "Fast teaching could make flexible automation practical for smaller manufacturers.",
+          "sections": {
+            "what_happened": [
+              "The robot extracts intent rather than copying exact motion.",
+              "Tests covered electronics and medical-device assembly."
+            ],
+            "metrics": [
+              {
+                "value": "1",
+                "label": "demo needed"
+              },
+              {
+                "value": "94%",
+                "label": "task success"
+              },
+              {
+                "value": "7",
+                "label": "tool types"
+              }
+            ],
+            "quote": "The system learns what the demonstration means, not just what it looks like.",
+            "timeline": [
+              {
+                "time": "08:00 UTC",
+                "title": "Research released",
+                "description": "The team published its paper, model card and evaluation results."
+              },
+              {
+                "time": "11:30 UTC",
+                "title": "Independent checks begin",
+                "description": "External researchers started reproducing the headline findings."
+              },
+              {
+                "time": "16:15 UTC",
+                "title": "Industry response",
+                "description": "Developers and policy teams published their first assessments."
+              }
+            ]
+          }
+        },
+        "ar": {
+          "tldr": "يمكن للروبوت الآن تعلم التجميع الدقيق من مشاهدة مثال خبير واحد، وتكيّف التقنية الحركة مع أدوات ومساحات عمل جديدة.",
+          "key_points": [
+            "تعلم من عرض واحد",
+            "انتقال بين الأدوات",
+            "أجزاء تالفة أقل"
+          ],
+          "why_it_matters": "قد يجعل التعليم السريع الأتمتة المرنة عملية للمصنعين الأصغر.",
+          "sections": {
+            "what_happened": [
+              "يستخلص الروبوت القصد بدلًا من نسخ الحركة حرفيًا.",
+              "شملت الاختبارات تجميع الإلكترونيات والأجهزة الطبية."
+            ],
+            "metrics": [
+              {
+                "value": "1",
+                "label": "عرض مطلوب"
+              },
+              {
+                "value": "94%",
+                "label": "نجاح المهمة"
+              },
+              {
+                "value": "7",
+                "label": "أنواع أدوات"
+              }
+            ],
+            "quote": "يتعلم النظام معنى العرض، لا شكله فقط.",
+            "timeline": [
+              {
+                "time": "08:00 بتوقيت غرينتش",
+                "title": "نشر البحث",
+                "description": "نشر الفريق الورقة العلمية وبطاقة النموذج ونتائج التقييم."
+              },
+              {
+                "time": "11:30 بتوقيت غرينتش",
+                "title": "بدء التحقق المستقل",
+                "description": "بدأ باحثون مستقلون في إعادة اختبار النتائج الرئيسية."
+              },
+              {
+                "time": "16:15 بتوقيت غرينتش",
+                "title": "استجابة القطاع",
+                "description": "نشرت فرق التطوير والسياسات تقييماتها الأولية."
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "slug": "inference-chip",
+      "title": {
+        "en": "The inference chip race enters its efficiency era",
+        "ar": "سباق شرائح الاستدلال يدخل عصر الكفاءة"
+      },
+      "summary": {
+        "en": "New silicon designs target lower energy use without compromising token throughput.",
+        "ar": "تستهدف تصاميم سيليكون جديدة خفض استهلاك الطاقة دون التأثير في إنتاجية الرموز."
+      },
+      "category": "ai-companies",
+      "source": "circuit",
+      "authors": [
+        "amir-haddad"
+      ],
+      "tags": [
+        "hardware",
+        "compute"
+      ],
+      "canonical_url": "https://example.com/",
+      "published_at": "2026-09-21T03:00:00Z",
+      "source_updated_at": "2026-09-21T04:00:00Z",
+      "reading_minutes": 8,
+      "view_count": 10100,
+      "importance": 4,
+      "is_featured": false,
+      "is_trending": false,
+      "extra": {
+        "image_asset": "nova-chips.jpg",
+        "image_width": 1200,
+        "image_height": 800,
+        "legacy_comment_count": 128
+      },
+      "brief": {
+        "en": {
+          "tldr": "Chipmakers are shifting attention from peak speed to useful work per watt. New architectures may significantly cut inference costs.",
+          "key_points": [
+            "Performance per watt leads",
+            "Memory redesign drives gains",
+            "Sampling begins this quarter"
+          ],
+          "why_it_matters": "Inference is becoming the dominant cost of widely used AI products.",
+          "sections": {
+            "what_happened": [
+              "Three vendors previewed purpose-built inference silicon.",
+              "All emphasize memory bandwidth and reduced data movement."
+            ],
+            "metrics": [
+              {
+                "value": "2.3×",
+                "label": "performance/watt"
+              },
+              {
+                "value": "-38%",
+                "label": "serving cost"
+              },
+              {
+                "value": "2027",
+                "label": "volume launch"
+              }
+            ],
+            "quote": "The cheapest token will define the next market leader.",
+            "timeline": [
+              {
+                "time": "08:00 UTC",
+                "title": "Research released",
+                "description": "The team published its paper, model card and evaluation results."
+              },
+              {
+                "time": "11:30 UTC",
+                "title": "Independent checks begin",
+                "description": "External researchers started reproducing the headline findings."
+              },
+              {
+                "time": "16:15 UTC",
+                "title": "Industry response",
+                "description": "Developers and policy teams published their first assessments."
+              }
+            ]
+          }
+        },
+        "ar": {
+          "tldr": "ينقل صانعو الشرائح اهتمامهم من السرعة القصوى إلى العمل المفيد لكل واط، وقد تخفض البنى الجديدة تكاليف الاستدلال كثيرًا.",
+          "key_points": [
+            "الأداء لكل واط في الصدارة",
+            "إعادة تصميم الذاكرة تقود المكاسب",
+            "بدء العينات هذا الربع"
+          ],
+          "why_it_matters": "أصبح الاستدلال التكلفة المهيمنة لمنتجات الذكاء الاصطناعي واسعة الاستخدام.",
+          "sections": {
+            "what_happened": [
+              "استعرضت ثلاث شركات شرائح مصممة خصيصًا للاستدلال.",
+              "تركز جميعها على عرض نطاق الذاكرة وتقليل حركة البيانات."
+            ],
+            "metrics": [
+              {
+                "value": "2.3×",
+                "label": "الأداء لكل واط"
+              },
+              {
+                "value": "-38%",
+                "label": "تكلفة التشغيل"
+              },
+              {
+                "value": "2027",
+                "label": "الإطلاق التجاري"
+              }
+            ],
+            "quote": "أرخص رمز سيحدد قائد السوق القادم.",
+            "timeline": [
+              {
+                "time": "08:00 بتوقيت غرينتش",
+                "title": "نشر البحث",
+                "description": "نشر الفريق الورقة العلمية وبطاقة النموذج ونتائج التقييم."
+              },
+              {
+                "time": "11:30 بتوقيت غرينتش",
+                "title": "بدء التحقق المستقل",
+                "description": "بدأ باحثون مستقلون في إعادة اختبار النتائج الرئيسية."
+              },
+              {
+                "time": "16:15 بتوقيت غرينتش",
+                "title": "استجابة القطاع",
+                "description": "نشرت فرق التطوير والسياسات تقييماتها الأولية."
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "papers": [
+    {
+      "slug": "attention-is-all-you-need",
+      "title": {
+        "en": "Attention Is All You Need",
+        "ar": "الانتباه هو كل ما تحتاجه"
+      },
+      "summary": {
+        "en": "Introduced the Transformer, a network built entirely on attention instead of recurrence, which became the foundation of modern language models.",
+        "ar": "قدّمت الورقة بنية المحوّل (Transformer) المبنية كليًا على آلية الانتباه بدلًا من التكرار، وأصبحت أساس النماذج اللغوية الحديثة."
+      },
+      "category": "ai-research",
+      "authors": [
+        "ashish-vaswani",
+        "noam-shazeer",
+        "niki-parmar"
+      ],
+      "tags": [
+        "transformers",
+        "llm"
+      ],
+      "arxiv_id": "1706.03762",
+      "pdf_url": "https://arxiv.org/pdf/1706.03762",
+      "canonical_url": "https://arxiv.org/abs/1706.03762",
+      "subject_areas": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "venue": "NeurIPS 2017",
+      "published_at": "2017-06-12T00:00:00Z",
+      "importance": 5
+    },
+    {
+      "slug": "language-models-are-few-shot-learners",
+      "title": {
+        "en": "Language Models are Few-Shot Learners",
+        "ar": "النماذج اللغوية تتعلم من أمثلة قليلة"
+      },
+      "summary": {
+        "en": "Showed that a very large language model (GPT-3) can perform many tasks from just a few examples in its prompt, without task-specific training.",
+        "ar": "أظهرت الورقة أن نموذجًا لغويًا كبيرًا جدًا (GPT-3) يستطيع أداء مهام كثيرة من أمثلة قليلة في المُدخل دون تدريب مخصص لكل مهمة."
+      },
+      "category": "ai-research",
+      "authors": [
+        "tom-b-brown",
+        "benjamin-mann",
+        "nick-ryder"
+      ],
+      "tags": [
+        "llm"
+      ],
+      "arxiv_id": "2005.14165",
+      "pdf_url": "https://arxiv.org/pdf/2005.14165",
+      "canonical_url": "https://arxiv.org/abs/2005.14165",
+      "subject_areas": [
+        "cs.CL"
+      ],
+      "venue": "NeurIPS 2020",
+      "published_at": "2020-05-28T00:00:00Z",
+      "importance": 5
+    }
+  ],
+  "courses": [
+    {
+      "slug": "python-ai",
+      "title": {
+        "en": "Python for AI Builders",
+        "ar": "بايثون لبناة الذكاء الاصطناعي"
+      },
+      "category": "course-programming",
+      "provider": "DeepLearning.AI",
+      "level": "beginner",
+      "duration_label": {
+        "en": "6 weeks",
+        "ar": "6 أسابيع"
+      },
+      "instruction_language": {
+        "en": "English",
+        "ar": "الإنجليزية"
+      },
+      "is_free": true,
+      "enrollment_url": "https://www.deeplearning.ai/",
+      "is_featured": true,
+      "extra": {
+        "image_asset": "nova-open-model.jpg"
+      }
+    },
+    {
+      "slug": "ml-foundations",
+      "title": {
+        "en": "Machine Learning Foundations",
+        "ar": "أساسيات تعلم الآلة"
+      },
+      "category": "course-machine-learning",
+      "provider": "Google",
+      "level": "intermediate",
+      "duration_label": {
+        "en": "8 weeks",
+        "ar": "8 أسابيع"
+      },
+      "instruction_language": {
+        "en": "English + Arabic captions",
+        "ar": "الإنجليزية مع ترجمة عربية"
+      },
+      "is_free": true,
+      "enrollment_url": "https://developers.google.com/machine-learning",
+      "is_featured": true,
+      "extra": {
+        "image_asset": "nova-chips.jpg"
+      }
+    },
+    {
+      "slug": "responsible-ai",
+      "title": {
+        "en": "Responsible AI in Practice",
+        "ar": "الذكاء الاصطناعي المسؤول عمليًا"
+      },
+      "category": "course-ai",
+      "provider": "Microsoft Learn",
+      "level": "intermediate",
+      "duration_label": {
+        "en": "4 weeks",
+        "ar": "4 أسابيع"
+      },
+      "instruction_language": {
+        "en": "Arabic",
+        "ar": "العربية"
+      },
+      "is_free": true,
+      "enrollment_url": "https://learn.microsoft.com/training/",
+      "is_featured": false,
+      "extra": {
+        "image_asset": "nova.jpg"
+      }
+    },
+    {
+      "slug": "data-analysis",
+      "title": {
+        "en": "Data Analysis with Python",
+        "ar": "تحليل البيانات باستخدام بايثون"
+      },
+      "category": "course-data-science",
+      "provider": "freeCodeCamp",
+      "level": "beginner",
+      "duration_label": {
+        "en": "10 hours",
+        "ar": "10 ساعات"
+      },
+      "instruction_language": {
+        "en": "English",
+        "ar": "الإنجليزية"
+      },
+      "is_free": true,
+      "enrollment_url": "https://www.freecodecamp.org/",
+      "is_featured": false,
+      "extra": {
+        "image_asset": "nova-open-model.jpg"
+      }
+    },
+    {
+      "slug": "cyber-basics",
+      "title": {
+        "en": "Cybersecurity Fundamentals",
+        "ar": "أساسيات الأمن السيبراني"
+      },
+      "category": "course-cybersecurity",
+      "provider": "Cisco Skills",
+      "level": "beginner",
+      "duration_label": {
+        "en": "5 weeks",
+        "ar": "5 أسابيع"
+      },
+      "instruction_language": {
+        "en": "Arabic",
+        "ar": "العربية"
+      },
+      "is_free": true,
+      "enrollment_url": "https://skillsforall.com/",
+      "is_featured": false,
+      "extra": {
+        "image_asset": "nova-chips.jpg"
+      }
+    },
+    {
+      "slug": "web-systems",
+      "title": {
+        "en": "Modern Web Systems",
+        "ar": "أنظمة الويب الحديثة"
+      },
+      "category": "course-web-development",
+      "provider": "HarvardX",
+      "level": "advanced",
+      "duration_label": {
+        "en": "9 weeks",
+        "ar": "9 أسابيع"
+      },
+      "instruction_language": {
+        "en": "English",
+        "ar": "الإنجليزية"
+      },
+      "is_free": true,
+      "enrollment_url": "https://www.edx.org/",
+      "is_featured": false,
+      "extra": {
+        "image_asset": "nova.jpg"
+      }
+    }
+  ],
+  "learning_paths": [
+    {
+      "slug": "ai-engineer",
+      "title": {
+        "en": "AI Engineer",
+        "ar": "مهندس ذكاء اصطناعي"
+      },
+      "level": "beginner",
+      "steps": [
+        {
+          "title": {
+            "en": "Python",
+            "ar": "بايثون"
+          },
+          "course": "python-ai"
+        },
+        {
+          "title": {
+            "en": "Data Science",
+            "ar": "علم البيانات"
+          },
+          "course": "data-analysis"
+        },
+        {
+          "title": {
+            "en": "Machine Learning",
+            "ar": "تعلم الآلة"
+          },
+          "course": "ml-foundations"
+        },
+        {
+          "title": {
+            "en": "AI Systems",
+            "ar": "أنظمة الذكاء الاصطناعي"
+          },
+          "course": "responsible-ai"
+        }
+      ]
+    },
+    {
+      "slug": "security-analyst",
+      "title": {
+        "en": "Security Analyst",
+        "ar": "محلل أمن سيبراني"
+      },
+      "level": "beginner",
+      "steps": [
+        {
+          "title": {
+            "en": "Networks",
+            "ar": "الشبكات"
+          },
+          "course": "cyber-basics"
+        },
+        {
+          "title": {
+            "en": "Linux",
+            "ar": "لينكس"
+          },
+          "course": null
+        },
+        {
+          "title": {
+            "en": "Threats",
+            "ar": "التهديدات"
+          },
+          "course": null
+        },
+        {
+          "title": {
+            "en": "Defense",
+            "ar": "الدفاع"
+          },
+          "course": null
+        }
+      ]
+    }
+  ],
+  "opportunities": [
+    {
+      "slug": "frontier-fellowship",
+      "title": {
+        "en": "Frontier AI Research Fellowship",
+        "ar": "زمالة أبحاث الذكاء الاصطناعي المتقدم"
+      },
+      "summary": {
+        "en": "A funded twelve-week program exploring reliable reasoning and model evaluation.",
+        "ar": "برنامج ممول لمدة اثني عشر أسبوعًا لدراسة الاستدلال الموثوق وتقييم النماذج."
+      },
+      "opportunity_type": "fellowship",
+      "organization": "Future Systems Institute",
+      "location": {
+        "en": "Remote",
+        "ar": "عن بُعد"
+      },
+      "country_code": null,
+      "is_remote": true,
+      "eligibility": {
+        "en": "Graduate students and early-career researchers",
+        "ar": "طلاب الدراسات العليا والباحثون في بداية مسيرتهم"
+      },
+      "deadline_at": "2026-10-04T23:59:00Z",
+      "employment_type": null,
+      "extra": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "robotics-intern",
+      "title": {
+        "en": "Robotics Intelligence Internship",
+        "ar": "تدريب ذكاء الروبوتات"
+      },
+      "summary": {
+        "en": "Work with a perception team on data pipelines and embodied evaluation.",
+        "ar": "العمل مع فريق الإدراك على مسارات البيانات وتقييم الأنظمة المجسدة."
+      },
+      "opportunity_type": "internship",
+      "organization": "Atlas Robotics",
+      "location": {
+        "en": "Dubai · On-site",
+        "ar": "دبي · حضوري"
+      },
+      "country_code": "AE",
+      "is_remote": false,
+      "eligibility": {
+        "en": "Undergraduate CS or engineering students",
+        "ar": "طلاب البكالوريوس في الحاسب أو الهندسة"
+      },
+      "deadline_at": "2026-10-19T23:59:00Z",
+      "employment_type": "internship",
+      "extra": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "climate-hack",
+      "title": {
+        "en": "AI for Climate Hackathon",
+        "ar": "هاكاثون الذكاء الاصطناعي للمناخ"
+      },
+      "summary": {
+        "en": "Build open tools for energy forecasting, adaptation and climate resilience.",
+        "ar": "بناء أدوات مفتوحة للتنبؤ بالطاقة والتكيف والمرونة المناخية."
+      },
+      "opportunity_type": "hackathon",
+      "organization": "Open Earth Lab",
+      "location": {
+        "en": "Remote",
+        "ar": "عن بُعد"
+      },
+      "country_code": null,
+      "is_remote": true,
+      "eligibility": {
+        "en": "Open worldwide; teams of 2–5",
+        "ar": "مفتوح عالميًا لفرق من شخصين إلى خمسة"
+      },
+      "deadline_at": "2026-11-02T23:59:00Z",
+      "employment_type": null,
+      "extra": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "women-ai-scholarship",
+      "title": {
+        "en": "Women in AI Scholarship",
+        "ar": "منحة المرأة في الذكاء الاصطناعي"
+      },
+      "summary": {
+        "en": "Tuition support, mentorship and a global peer network.",
+        "ar": "دعم للرسوم الدراسية وإرشاد وشبكة عالمية من الزميلات."
+      },
+      "opportunity_type": "scholarship",
+      "organization": "Global Tech Foundation",
+      "location": {
+        "en": "Global",
+        "ar": "عالمي"
+      },
+      "country_code": null,
+      "is_remote": false,
+      "eligibility": {
+        "en": "Women entering an AI-related master’s program",
+        "ar": "النساء الملتحقات ببرنامج ماجستير مرتبط بالذكاء الاصطناعي"
+      },
+      "deadline_at": "2026-10-12T23:59:00Z",
+      "employment_type": null,
+      "extra": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "agents-challenge",
+      "title": {
+        "en": "Autonomous Agents Challenge",
+        "ar": "تحدي الوكلاء المستقلين"
+      },
+      "summary": {
+        "en": "Compete on long-horizon planning, safety and transparent execution.",
+        "ar": "تنافس في التخطيط طويل الأمد والسلامة والتنفيذ الشفاف."
+      },
+      "opportunity_type": "competition",
+      "organization": "BuildBench",
+      "location": {
+        "en": "Remote",
+        "ar": "عن بُعد"
+      },
+      "country_code": null,
+      "is_remote": true,
+      "eligibility": {
+        "en": "Developers and research teams",
+        "ar": "المطورون والفرق البحثية"
+      },
+      "deadline_at": "2026-09-28T23:59:00Z",
+      "employment_type": null,
+      "extra": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "ml-bootcamp",
+      "title": {
+        "en": "Applied ML Bootcamp",
+        "ar": "معسكر تعلم الآلة التطبيقي"
+      },
+      "summary": {
+        "en": "An intensive project-led path from data preparation to deployment.",
+        "ar": "مسار مكثف قائم على المشاريع من إعداد البيانات إلى النشر."
+      },
+      "opportunity_type": "bootcamp",
+      "organization": "NOVA Academy",
+      "location": {
+        "en": "Riyadh · Hybrid",
+        "ar": "الرياض · هجين"
+      },
+      "country_code": "SA",
+      "is_remote": false,
+      "eligibility": {
+        "en": "Basic Python knowledge",
+        "ar": "معرفة أساسية ببايثون"
+      },
+      "deadline_at": "2026-11-15T23:59:00Z",
+      "employment_type": null,
+      "extra": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "arabic-nlp-ml-engineer",
+      "title": {
+        "en": "Machine Learning Engineer, Arabic NLP",
+        "ar": "مهندس تعلم آلة، معالجة اللغة العربية"
+      },
+      "summary": {
+        "en": "Build and evaluate language models for Arabic search and assistants. (Sample listing for development.)",
+        "ar": "بناء وتقييم نماذج لغوية للبحث والمساعدات باللغة العربية. (إعلان تجريبي لأغراض التطوير.)"
+      },
+      "opportunity_type": "job",
+      "organization": "Sample AI Lab",
+      "location": {
+        "en": "Riyadh · Hybrid",
+        "ar": "الرياض · هجين"
+      },
+      "country_code": "SA",
+      "is_remote": false,
+      "eligibility": {
+        "en": "2+ years of ML engineering; Python; Arabic a plus",
+        "ar": "خبرة سنتين أو أكثر في هندسة تعلم الآلة؛ بايثون؛ العربية ميزة إضافية"
+      },
+      "deadline_at": "2026-10-31T23:59:00Z",
+      "employment_type": "full_time",
+      "seniority": "mid",
+      "salary_text": "Competitive",
+      "extra": {
+        "sample": true
+      }
+    },
+    {
+      "slug": "trustworthy-ai-research-program",
+      "title": {
+        "en": "Undergraduate Research Program in Trustworthy AI",
+        "ar": "برنامج بحثي للطلاب الجامعيين في الذكاء الاصطناعي الموثوق"
+      },
+      "summary": {
+        "en": "A ten-week supervised research project on evaluation and robustness. (Sample listing for development.)",
+        "ar": "مشروع بحثي بإشراف لمدة عشرة أسابيع حول التقييم والمتانة. (إعلان تجريبي لأغراض التطوير.)"
+      },
+      "opportunity_type": "research",
+      "organization": "Sample University",
+      "location": {
+        "en": "Remote",
+        "ar": "عن بُعد"
+      },
+      "is_remote": true,
+      "eligibility": {
+        "en": "Undergraduate students in CS, math or engineering",
+        "ar": "طلاب البكالوريوس في علوم الحاسب أو الرياضيات أو الهندسة"
+      },
+      "deadline_at": "2026-11-20T23:59:00Z",
+      "extra": {
+        "sample": true
+      }
+    }
+  ],
+  "tools": [
+    {
+      "slug": "pytorch",
+      "title": {
+        "en": "PyTorch",
+        "ar": "باي تورش"
+      },
+      "summary": {
+        "en": "Open-source deep learning framework widely used for research and production.",
+        "ar": "إطار مفتوح المصدر للتعلم العميق يُستخدم على نطاق واسع في البحث والإنتاج."
+      },
+      "website_url": "https://pytorch.org/",
+      "pricing": "open_source",
+      "vendor": "PyTorch Foundation",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "has_api": true,
+      "repository_url": "https://github.com/pytorch/pytorch",
+      "tags": [
+        "python"
+      ],
+      "category": "ai-tools"
+    },
+    {
+      "slug": "hugging-face-transformers",
+      "title": {
+        "en": "Hugging Face Transformers",
+        "ar": "مكتبة Transformers من Hugging Face"
+      },
+      "summary": {
+        "en": "Library for downloading, running and fine-tuning thousands of pretrained models.",
+        "ar": "مكتبة لتنزيل آلاف النماذج المدرّبة مسبقًا وتشغيلها وضبطها."
+      },
+      "website_url": "https://huggingface.co/docs/transformers",
+      "pricing": "open_source",
+      "vendor": "Hugging Face",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "has_api": true,
+      "repository_url": "https://github.com/huggingface/transformers",
+      "tags": [
+        "transformers",
+        "python"
+      ],
+      "category": "ai-tools"
+    },
+    {
+      "slug": "ollama",
+      "title": {
+        "en": "Ollama",
+        "ar": "أولاما"
+      },
+      "summary": {
+        "en": "Runs open-weight language models locally on your own computer.",
+        "ar": "تشغيل نماذج لغوية مفتوحة الأوزان محليًا على جهازك."
+      },
+      "website_url": "https://ollama.com/",
+      "pricing": "open_source",
+      "vendor": "Ollama",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "has_api": true,
+      "repository_url": "https://github.com/ollama/ollama",
+      "tags": [
+        "llm",
+        "open-weights"
+      ],
+      "category": "ai-tools"
+    },
+    {
+      "slug": "scikit-learn",
+      "title": {
+        "en": "scikit-learn",
+        "ar": "سايكيت-ليرن"
+      },
+      "summary": {
+        "en": "Python library for classic machine learning: classification, regression and clustering.",
+        "ar": "مكتبة بايثون لتعلم الآلة التقليدي: التصنيف والانحدار والتجميع."
+      },
+      "website_url": "https://scikit-learn.org/",
+      "pricing": "open_source",
+      "vendor": "scikit-learn developers",
+      "platforms": [
+        "linux",
+        "macos",
+        "windows"
+      ],
+      "has_api": false,
+      "repository_url": "https://github.com/scikit-learn/scikit-learn",
+      "tags": [
+        "python"
+      ],
+      "category": "ai-tools"
+    }
+  ],
+  "users": [
+    {
+      "key": "admin",
+      "email": "admin@example.com",
+      "display_name": "Dev Admin",
+      "role": "admin",
+      "preferences": {
+        "language": "en",
+        "theme": "dark",
+        "timezone": "UTC",
+        "email_digest": "daily"
+      },
+      "interests": [
+        {
+          "category": "ai-research",
+          "weight": 1
+        },
+        {
+          "category": "ai-safety",
+          "weight": 0.8
+        }
+      ],
+      "saved": [
+        "article:multimodal-reasoning",
+        "paper:attention-is-all-you-need"
+      ]
+    },
+    {
+      "key": "reader",
+      "email": "reader@example.com",
+      "display_name": "قارئ تجريبي",
+      "role": "user",
+      "preferences": {
+        "language": "ar",
+        "theme": "system",
+        "timezone": "Asia/Riyadh",
+        "email_digest": "weekly"
+      },
+      "interests": [
+        {
+          "category": "ai-agents",
+          "weight": 1
+        },
+        {
+          "category": "course-machine-learning",
+          "weight": 0.7
+        }
+      ],
+      "saved": [
+        "opportunity:women-ai-scholarship",
+        "course:python-ai",
+        "article:benchmark"
+      ]
+    }
+  ],
+  "notifications": [
+    {
+      "user": "reader",
+      "kind": "deadline_reminder",
+      "content": "opportunity:women-ai-scholarship",
+      "title": {
+        "en": "Women in AI Scholarship closes in 3 days",
+        "ar": "تغلق منحة المرأة في الذكاء الاصطناعي بعد 3 أيام"
+      },
+      "link_path": "/opportunities",
+      "created_at": "2026-10-09T08:00:00Z"
+    },
+    {
+      "user": "admin",
+      "kind": "daily_brief",
+      "title": {
+        "en": "Your daily AI briefing is ready",
+        "ar": "موجزك اليومي جاهز"
+      },
+      "link_path": "/",
+      "created_at": "2026-09-21T06:00:00Z",
+      "read_at": "2026-09-21T07:12:00Z"
+    }
+  ],
+  "daily_briefs": [
+    {
+      "date": "2026-09-21",
+      "status": "published",
+      "headline": {
+        "en": "Good morning. Here's what matters.",
+        "ar": "صباح الخير. إليك ما يهم اليوم."
+      },
+      "intro": {
+        "en": "Signal over noise: the consequential developments shaping artificial intelligence today.",
+        "ar": "إشارات موثوقة وسط الضجيج: أهم التطورات التي تشكل مستقبل الذكاء الاصطناعي."
+      },
+      "signal": {
+        "en": "Multimodal reasoning moved from demo to measurable gains.",
+        "ar": "انتقل الاستدلال متعدد الوسائط من العروض التجريبية إلى مكاسب قابلة للقياس."
+      },
+      "published_at": "2026-09-21T06:00:00Z",
+      "items": [
+        {
+          "content": "article:multimodal-reasoning",
+          "blurb": {
+            "en": "Researchers report a step-change in how foundation models connect visual evidence, spoken context and structured logic—without sacrificing response speed.",
+            "ar": "أعلن باحثون عن تقدم نوعي في قدرة النماذج الأساسية على ربط الأدلة المرئية والسياق الصوتي والمنطق المنظم دون التضحية بسرعة الاستجابة."
+          }
+        },
+        {
+          "content": "article:policy",
+          "blurb": {
+            "en": "The voluntary standard introduces shared reporting thresholds for frontier labs.",
+            "ar": "يقدم المعيار الطوعي حدودًا مشتركة للإبلاغ لدى مختبرات النماذج المتقدمة."
+          }
+        },
+        {
+          "content": "article:benchmark",
+          "blurb": {
+            "en": "A 1,200-task evaluation finds even leading agents struggle to recover from early mistakes.",
+            "ar": "يكشف تقييم يضم 1200 مهمة أن الوكلاء الرائدين يواجهون صعوبة في التعافي من الأخطاء المبكرة."
+          }
+        }
+      ]
+    }
+  ],
+  "collection_jobs": [
+    {
+      "key": "seed-import",
+      "job_type": "seed_import",
+      "trigger": "manual",
+      "status": "succeeded",
+      "started_at": "2026-09-21T05:00:00Z",
+      "finished_at": "2026-09-21T05:00:04Z",
+      "items_found": 7,
+      "items_created": 7,
+      "details": {
+        "note": "Development seed data"
+      }
+    },
+    {
+      "key": "arxiv-sample-failure",
+      "job_type": "fetch_arxiv",
+      "source": "arxiv-ai",
+      "trigger": "schedule",
+      "status": "failed",
+      "started_at": "2026-09-21T01:30:00Z",
+      "finished_at": "2026-09-21T01:30:10Z",
+      "items_failed": 1,
+      "error_message": "Sample failure: request timed out"
+    }
+  ],
+  "processing_logs": [
+    {
+      "content": "article:multimodal-reasoning",
+      "collection_job": "seed-import",
+      "step": "summarize",
+      "status": "succeeded",
+      "provider": "sample",
+      "model": "hand-written sample",
+      "duration_ms": 0
+    },
+    {
+      "content": "article:compute-fund",
+      "collection_job": "seed-import",
+      "step": "summarize",
+      "status": "succeeded",
+      "provider": "sample",
+      "model": "hand-written sample",
+      "duration_ms": 0
+    },
+    {
+      "content": "article:benchmark",
+      "collection_job": "seed-import",
+      "step": "summarize",
+      "status": "succeeded",
+      "provider": "sample",
+      "model": "hand-written sample",
+      "duration_ms": 0
+    },
+    {
+      "content": "article:policy",
+      "collection_job": "seed-import",
+      "step": "summarize",
+      "status": "succeeded",
+      "provider": "sample",
+      "model": "hand-written sample",
+      "duration_ms": 0
+    },
+    {
+      "content": "article:open-weights",
+      "collection_job": "seed-import",
+      "step": "summarize",
+      "status": "succeeded",
+      "provider": "sample",
+      "model": "hand-written sample",
+      "duration_ms": 0
+    },
+    {
+      "content": "article:robot-learning",
+      "collection_job": "seed-import",
+      "step": "summarize",
+      "status": "succeeded",
+      "provider": "sample",
+      "model": "hand-written sample",
+      "duration_ms": 0
+    },
+    {
+      "content": "article:inference-chip",
+      "collection_job": "seed-import",
+      "step": "summarize",
+      "status": "succeeded",
+      "provider": "sample",
+      "model": "hand-written sample",
+      "duration_ms": 0
+    }
+  ],
+  "error_logs": [
+    {
+      "severity": "warning",
+      "component": "collector",
+      "error_type": "TimeoutError",
+      "message": "Sample: arXiv request timed out after 10s",
+      "collection_job": "arxiv-sample-failure",
+      "occurred_at": "2026-09-21T01:30:10Z",
+      "resolved_at": "2026-09-21T02:00:00Z"
+    }
+  ]
+}
