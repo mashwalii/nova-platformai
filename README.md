@@ -135,13 +135,15 @@ This repository is connected to **Lovable**: commits on `main` sync into the Lov
 
 ## Restoring a Previous Version
 
-A permanent bookmark (git tag) named **`v0-lovable-baseline`** marks the original Lovable version of the app, before any development work began.
+The original Lovable version of the app, before any development work began, is commit **`5da6499`** ("Add project README"). Every commit ID is permanent, so this version can always be recovered.
+
+*Recommended:* give it an easy-to-remember name by creating a tag called **`v0-lovable-baseline`** — on GitHub: **Releases → Draft a new release → Choose a tag → type `v0-lovable-baseline` → Target: pick commit `5da6499` via "Recent commits"** → Publish (or from a terminal: `git tag v0-lovable-baseline 5da6499 && git push origin v0-lovable-baseline`). Once it exists, you can use `v0-lovable-baseline` anywhere `5da6499` appears below.
 
 | Situation | Safe way to go back |
 | --- | --- |
 | A merged Pull Request broke something | On GitHub, open the PR and click **Revert** → merge the new "revert" PR. History is kept; nothing is deleted. |
-| You want to look at the original version | `git checkout v0-lovable-baseline` (read-only look), then `git checkout main` to return. |
-| You want a working copy of the original to start again from | `git checkout -b restore-baseline v0-lovable-baseline`, then open a PR from that branch. |
+| You want to look at the original version | `git checkout 5da6499` (read-only look), then `git checkout main` to return. |
+| You want a working copy of the original to start again from | `git checkout -b restore-baseline 5da6499`, then open a PR from that branch. |
 | In Lovable | Use Lovable's built-in version history to restore an earlier version. |
 
 Avoid `git reset --hard` followed by a force-push on `main` — it rewrites history and breaks the Lovable sync.
