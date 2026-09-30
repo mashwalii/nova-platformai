@@ -43,7 +43,7 @@ Phase 12 is split into **12A** (connect *existing* pages — can happen right af
 | --- | --- | --- | --- | --- |
 | 0 | Project analysis | — | — | ✅ `PROJECT_ANALYSIS.md` done |
 | 1 | Git and project safety | S | 0 | Safe workflow, CI, baseline screenshots |
-| 2 | Backend foundation | S | 1 | FastAPI skeleton running with `/health` |
+| 2 | Backend foundation | S | 1 | ✅ FastAPI foundation, DB layer, migrations, tests |
 | 3 | Database | M | 2 | Schema + seed data + read-only API |
 | 4 | News aggregation | M | 3 | Real AI news fetched and stored |
 | 5 | Scientific research aggregation | M | 3 | arXiv papers fetched and stored |
@@ -97,7 +97,10 @@ Phase 12 is split into **12A** (connect *existing* pages — can happen right af
 
 ---
 
-## Phase 2 — Backend Foundation
+## Phase 2 — Backend Foundation ✅
+
+**Status:** Complete. Delivered in `backend/` (see `backend/README.md`). At the owner's request this phase also includes the database connection layer (SQLAlchemy async), the migration system (Alembic, baseline migration `0001`), and the service/repository layers — i.e. step 3.2 of Phase 3 is already done. Verified: server runs with and without a database; 75 automated tests pass (including real-PostgreSQL tests); Docker image builds, runs as non-root, and passes its health check. The Dockerfile uses `pip install uv` rather than copying from `ghcr.io`, and the base image is overridable (`PYTHON_IMAGE`) for registry mirrors.
+
 
 **Goal:** A minimal, well-structured FastAPI service that runs locally and in CI — no database or features yet.
 

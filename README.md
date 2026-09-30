@@ -5,7 +5,7 @@ A bilingual (English / العربية) AI information platform: AI news and summ
 **Live app:** https://nova-platformai.lovable.app
 **Lovable editor:** https://lovable.dev/projects/5e609998-42ba-4aca-a350-a298a82aaa3c
 
-> **Current status:** frontend prototype. All content comes from built-in sample data in `src/data/`. There is no backend, database, or login yet — see the roadmap documents below.
+> **Current status:** the website (frontend) still shows built-in sample data from `src/data/`. The backend foundation (Phase 2) exists in [`backend/`](backend/) but is **not connected to the website yet** — see the roadmap documents below.
 
 ---
 
@@ -16,6 +16,7 @@ A bilingual (English / العربية) AI information platform: AI news and summ
 | [`PROJECT_ANALYSIS.md`](PROJECT_ANALYSIS.md) | Analysis of the current codebase |
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | Target architecture (backend, database, AI, search) |
 | [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md) | Step-by-step build plan in phases |
+| [`backend/README.md`](backend/README.md) | Backend developer guide (commands, structure, database, Docker) |
 | [`docs/ORIGINAL_DESIGN_BRIEF.md`](docs/ORIGINAL_DESIGN_BRIEF.md) | The original Lovable design brief (design-system reference) |
 | [`src/routes/README.md`](src/routes/README.md) | How page routing works |
 
@@ -28,10 +29,11 @@ A bilingual (English / العربية) AI information platform: AI news and summ
 - **Styling:** Tailwind CSS v4 + shadcn/ui components
 - **Build tool:** Vite (via `@lovable.dev/vite-tanstack-config`)
 - **Package manager:** **Bun** (the lockfile is `bun.lock`)
+- **Backend:** Python 3.12 + FastAPI, PostgreSQL (SQLAlchemy + Alembic migrations), managed with **uv** — see [`backend/README.md`](backend/README.md)
 
 ---
 
-## Running the Project Locally
+## Running the Website (Frontend) Locally
 
 ### 1. Install the tools (one time)
 
@@ -93,6 +95,60 @@ Open the address printed in the terminal (usually http://localhost:8080 or http:
 
 ---
 
+## Running the Backend Locally
+
+The backend is a separate program in the `backend/` folder. It runs on its own and does not change the website yet.
+
+### 1. Install uv (one time)
+
+uv installs Python and the backend's libraries for you. Follow the official instructions: https://docs.astral.sh/uv/getting-started/installation/
+
+- **macOS / Linux:** `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- **Windows (PowerShell):** `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"`
+
+Close and reopen your terminal, then check: `uv --version`
+
+### 2. Install the backend's dependencies
+
+```sh
+cd backend
+uv sync
+```
+
+### 3. Start the backend
+
+```sh
+uv run python -m app
+```
+
+Leave this terminal window open — the backend runs as long as it stays open. Stop it with **Ctrl + C**.
+
+### 4. Check that it works
+
+Open these addresses in your web browser:
+
+- http://127.0.0.1:8000/health → should show `{"status":"ok","service":"NOVA AI API","version":"0.1.0"}`
+- http://127.0.0.1:8000/docs → interactive page listing every API endpoint
+- http://127.0.0.1:8000/ready → shows `"not_configured"` until a database is connected (this is expected)
+
+### 5. Run the tests
+
+In a second terminal window:
+
+```sh
+cd backend
+uv run pytest
+```
+
+The last line should say **passed** (for example `62 passed, 13 skipped`) and must not mention **failed**. Skipped tests need a separate test database — see [`backend/README.md`](backend/README.md#running-the-database-tests).
+
+### Optional: settings and database
+
+- Settings: copy `backend/.env.example` to `backend/.env` and edit your copy. **Never commit `.env`.**
+- Database: put your PostgreSQL/Supabase connection string in `backend/.env` as `DATABASE_URL=...`, then run `uv run alembic upgrade head`. Full steps: [`backend/README.md`](backend/README.md#connecting-a-database).
+
+---
+
 ## Project Structure
 
 ```
@@ -107,6 +163,8 @@ src/
 └── styles.css     # Design system (colors, dark mode, shadows)
 public/            # Static files (favicon, robots.txt)
 docs/              # Project documents
+backend/           # Python/FastAPI backend (see backend/README.md)
+.github/workflows/ # Automatic checks that run on GitHub
 ```
 
 `src/routeTree.gen.ts` is generated automatically — do not edit it by hand.

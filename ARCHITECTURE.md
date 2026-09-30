@@ -211,12 +211,13 @@ nova-platformai/
 │   ├── app/
 │   │   ├── main.py               # FastAPI app factory
 │   │   ├── config.py             # settings from environment variables
-│   │   ├── core/                 # db session, security (JWT), logging, errors, rate limits
+│   │   ├── core/                 # config, database, logging, errors, middleware, security (JWT), rate limits
 │   │   ├── models/               # SQLAlchemy tables
 │   │   ├── schemas/              # Pydantic request/response shapes (the API contract)
 │   │   ├── api/v1/               # route modules: news, research, courses, opportunities,
 │   │   │                         #   tools, briefings, search, ask, me, admin, health
 │   │   ├── services/             # business logic (feeds, scoring, recommendations…)
+│   │   ├── repositories/         # data access layer: all database queries
 │   │   ├── ingestion/            # source connectors: rss.py, arxiv.py, greenhouse.py, …
 │   │   ├── ai/
 │   │   │   ├── providers/        # base.py, anthropic_provider.py, ollama_provider.py, fake.py

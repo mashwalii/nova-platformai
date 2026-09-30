@@ -95,6 +95,7 @@ venv/
 env/
 ENV/
 .python-version
+!backend/.python-version
 *.egg-info/
 .eggs/
 build/
