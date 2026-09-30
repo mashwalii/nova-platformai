@@ -30,3 +30,115 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ---------------------------------------------------------------------------
+# Secrets & credentials — NEVER commit these.
+# Put real values in a local `.env` file; document variable NAMES only in
+# `.env.example` (which is deliberately NOT ignored).
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.env
+.envrc
+.secrets/
+secrets/
+*.secret
+*.secrets
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+*.cer
+*.der
+id_rsa*
+id_ed25519*
+id_ecdsa*
+id_dsa*
+
+# Cloud / service credential files
+credentials.json
+*credentials*.json
+client_secret*.json
+service-account*.json
+*-service-account.json
+gcloud-*.json
+.aws/
+.azure/
+.gcloud/
+.supabase/
+supabase/.temp/
+supabase/.branches/
+
+# Package-registry auth files (may contain tokens)
+.npmrc
+.yarnrc
+.pypirc
+.netrc
+
+# ---------------------------------------------------------------------------
+# Python (future backend/)
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+.python-version
+*.egg-info/
+.eggs/
+build/
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+.hypothesis/
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Frontend tooling / test output
+# ---------------------------------------------------------------------------
+coverage/
+.eslintcache
+.cache/
+.turbo/
+.parcel-cache/
+*.tsbuildinfo
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# ---------------------------------------------------------------------------
+# Local databases, dumps and large local AI model files
+# ---------------------------------------------------------------------------
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.sql.gz
+*.gguf
+*.safetensors
+models-cache/
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
